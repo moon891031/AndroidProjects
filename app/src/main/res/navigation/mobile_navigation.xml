@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.number.ui.home.HomeFragment"
+        android:label="@string/nav_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_contacts"
+        android:name="com.example.number.ui.contacts.ContactsFragment"
+        android:label="@string/nav_contacts"
+        tools:layout="@layout/fragment_contacts" />
+
+    <fragment
+        android:id="@+id/navigation_call_log"
+        android:name="com.example.number.ui.calllog.CallLogFragment"
+        android:label="@string/nav_callLog"
+        tools:layout="@layout/fragment_call_log" />
+    <fragment
+        android:id="@+id/navigation_settings"
+        android:name="com.example.number.ui.settings.SettingFragment"
+        android:label="@string/nav_settings"
+        tools:layout="@layout/fragment_settings" />
+</navigation>

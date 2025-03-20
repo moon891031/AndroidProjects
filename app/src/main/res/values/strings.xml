@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">number</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_contacts">Contacts</string>
+    <string name="nav_callLog">CallLog</string>
+    <string name="nav_settings">Settings</string>
+</resources>
