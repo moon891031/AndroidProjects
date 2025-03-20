@@ -19,7 +19,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-
+//git.0320
 class MainActivity : AppCompatActivity() {
 
     private val REQUEST_CODE = 100  // 전화 상태 권한 요청 코드
