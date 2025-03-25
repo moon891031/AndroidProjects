@@ -26,20 +26,24 @@
         <service android:name=".OverlayService"
             android:permission="android.permission.SYSTEM_ALERT_WINDOW" />
         <service
-            android:name=".PhoneService"
+            android:name=".ForegroundService"
             android:enabled="true"
             android:exported="false"
             android:foregroundServiceType="phoneCall" />
         <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            android:label="@string/app_name">
+            android:name=".SplashActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- MainActivity는 SplashActivity 이후에 보여줄 화면 -->
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".LoginActivity" />
+
         <receiver
             android:name=".PhoneReceiver"
             android:enabled="true"

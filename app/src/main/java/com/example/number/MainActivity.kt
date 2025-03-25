@@ -77,7 +77,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        val serviceIntent = Intent(this, PhoneService::class.java)
+        val serviceIntent = Intent(this, ForegroundService::class.java)
         ContextCompat.startForegroundService(this, serviceIntent)
 
         val navView: BottomNavigationView = binding.navView
@@ -109,7 +109,7 @@ class MainActivity : AppCompatActivity() {
         if (requestCode == REQUEST_CODE) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 // 권한 허용 시 서비스 실행
-                val serviceIntent = Intent(this, PhoneService::class.java)
+                val serviceIntent = Intent(this, ForegroundService::class.java)
                 ContextCompat.startForegroundService(this, serviceIntent)
             } else {
                 // 권한 거부 시 처리
