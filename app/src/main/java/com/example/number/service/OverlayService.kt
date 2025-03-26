@@ -1,4 +1,4 @@
-package com.example.number
+package com.example.number.service
 
 import android.app.Service
 import android.content.Context
@@ -9,6 +9,7 @@ import android.view.WindowManager
 import android.widget.TextView
 import android.graphics.PixelFormat
 import android.content.Intent
+import com.example.number.R
 
 class OverlayService : Service() {
 
