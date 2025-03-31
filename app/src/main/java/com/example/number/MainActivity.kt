@@ -26,11 +26,14 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.provider.ContactsContract
 import android.content.ContentResolver
 import android.content.DialogInterface
-import android.database.Cursor
 import android.widget.ArrayAdapter
 import android.widget.ListView
+import android.service.notification.NotificationListenerService
+import android.service.notification.StatusBarNotification
 
-//git.0320
+
+
+
 class MainActivity : AppCompatActivity() {
 
     private val REQUEST_CONTACTS_PERMISSION = 1
