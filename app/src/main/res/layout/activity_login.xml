@@ -4,70 +4,77 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- 로그인 폼 컨테이너 -->
-    <LinearLayout
+    <!-- 스크롤 뷰 추가 -->
+    <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:padding="20dp"
-        app:layout_constraintWidth_percent="0.8"
-        app:layout_constraintHeight_percent="0.8"
+        android:fillViewport="true"
+        app:layout_constraintWidth_percent="0.9"
+        app:layout_constraintHeight_percent="0.9"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- ID 입력 -->
-        <ImageView
-            android:layout_width="118dp"
-            android:layout_height="155dp"
-            android:src="@drawable/voda_logo"
-            android:layout_marginBottom="30dp"
-            />
-        <EditText
-            android:id="@+id/username"
+        <!-- 로그인 폼 컨테이너 -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Id"
-            android:paddingBottom="20dp"
-            android:layout_marginBottom="20dp"
-            android:singleLine="true"
-            android:inputType="text"/>
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="20dp">
 
-        <!-- 비밀번호 입력 -->
-        <EditText
-            android:id="@+id/password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:paddingBottom="20dp"
-            android:layout_marginBottom="20dp"
-            android:singleLine="true"
-            />
+            <!-- ID 입력 -->
+            <ImageView
+                android:layout_width="118dp"
+                android:layout_height="155dp"
+                android:src="@drawable/voda_logo"
+                android:layout_marginBottom="30dp"
+                />
 
-        <!-- 로그인 버튼 -->
-        <Button
-            android:id="@+id/loginButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#FADA7A"
-            android:textColor="@color/black"
-            app:cornerRadius="20dp"
-            android:text="Login"/>
+            <EditText
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Id"
+                android:paddingBottom="15dp"
+                android:layout_marginBottom="20dp"
+                android:singleLine="true"
+                android:inputType="text"/>
 
+            <!-- 비밀번호 입력 -->
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:paddingBottom="15dp"
+                android:drawableEnd="@drawable/ic_eye_off"
+                android:drawableTint="@color/black"
+                android:drawablePadding="10dp"/>
+            <!-- 로그인 버튼 -->
+            <Button
+                android:id="@+id/loginButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#FADA7A"
+                android:text="Login"
+                android:textColor="@color/black"
+                app:cornerRadius="20dp" />
 
-        <TextView
-            android:id="@+id/signUpLink"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="회원가입"
-            android:textColor="@android:color/holo_blue_dark"
-            android:layout_marginTop="20dp"
-            android:clickable="true"
-            android:focusable="true"/>
+            <TextView
+                android:id="@+id/signUpLink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="회원가입"
+                android:textColor="@android:color/holo_blue_dark"
+                android:layout_marginTop="20dp"
+                android:clickable="true"
+                android:focusable="true"/>
 
-    </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

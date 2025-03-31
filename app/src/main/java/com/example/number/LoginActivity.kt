@@ -1,9 +1,14 @@
 package com.example.number
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.text.InputType
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -20,15 +25,42 @@ import com.example.number.model.UserInfo
 class LoginActivity : AppCompatActivity() {
 
     private val userRepository = UserRepository()
+    private lateinit var eyeIcon: ImageView
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportActionBar?.hide()
         setContentView(R.layout.activity_login)
 
         val usernameEditText: EditText = findViewById(R.id.username)
         val passwordEditText: EditText = findViewById(R.id.password)
 
         val loginButton: Button = findViewById(R.id.loginButton)
+
+        var isPasswordVisible = false // 초기 상태: 비밀번호 숨김
+        passwordEditText.setOnTouchListener { _, event ->
+            val DRAWABLE_END = 2 // 우측 아이콘의 인덱스
+            if (event.action == android.view.MotionEvent.ACTION_UP) {
+                if (event.rawX >= (passwordEditText.right - passwordEditText.compoundDrawables[DRAWABLE_END].bounds.width())) {
+                    // 비밀번호 보이기/숨기기 토글
+                    isPasswordVisible = !isPasswordVisible
+
+                    if (isPasswordVisible) {
+                        passwordEditText.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                        passwordEditText.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_eye_off, 0)
+                    } else {
+                        passwordEditText.transformationMethod = PasswordTransformationMethod.getInstance()
+                        passwordEditText.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_eye_off, 0)
+                    }
+
+                    // 커서 위치 유지
+                    passwordEditText.setSelection(passwordEditText.text.length)
+                    return@setOnTouchListener true
+                }
+            }
+            false
+        }
         loginButton.setOnClickListener {
             val username = usernameEditText.text.toString()
             val password = passwordEditText.text.toString()

@@ -12,7 +12,7 @@
     <uses-permission android:name="android.permission.DIALER" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
-    <uses-permission android:name="android.permission.READ_CALL_LOG"/>
+
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -26,6 +26,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Number"
+
         android:networkSecurityConfig="@xml/network_security_config"
 
         tools:targetApi="31">
@@ -39,6 +40,7 @@
         <activity
             android:name=".SplashActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -47,9 +49,12 @@
         </activity>
 
         <!-- MainActivity는 SplashActivity 이후에 보여줄 화면 -->
-        <activity android:name=".MainActivity"/>
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".SignUpActivity"/>
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".LoginActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".SignUpActivity"
+            android:screenOrientation="portrait"/>
 
 
         <receiver

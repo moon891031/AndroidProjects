@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        supportActionBar?.hide()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -152,7 +152,7 @@ class MainActivity : AppCompatActivity() {
     }
     private fun showContactListDialog(contactList: List<String>) {
         val builder = AlertDialog.Builder(this)
-        builder.setTitle("연락처 목록")
+        //builder.setTitle("연락처 목록")
 
         // 리스트뷰를 다이얼로그에 넣기
         val listView = ListView(this)

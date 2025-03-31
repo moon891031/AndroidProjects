@@ -9,8 +9,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fillViewport="true"
-        app:layout_constraintWidth_percent="0.8"
-        app:layout_constraintHeight_percent="0.8"
+        app:layout_constraintWidth_percent="0.9"
+        app:layout_constraintHeight_percent="0.9"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,45 +24,141 @@
             android:gravity="center"
             android:padding="20dp">
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/signup_text_name"
-                android:textColor="@color/black"
-                android:textSize="12sp"/>
-            <EditText
-                android:id="@+id/signUpName"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:autofillHints="이름"
-                android:background="@drawable/edittext_border"
-                android:layout_marginBottom="20dp"/>
+                android:text="회원가입"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/signup_text_id"
+                android:text="@string/signup_tv_name"
                 android:textColor="@color/black"
                 android:textSize="12sp"/>
             <EditText
-                android:id="@+id/signUpID"
+                android:id="@+id/sign_up_edit_name"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:autofillHints="이름"
                 android:background="@drawable/edittext_border"
+                android:layout_marginBottom="10dp"
+                android:singleLine="true" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/signup_tv_id"
+                android:textColor="@color/black"
+                android:textSize="12sp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:orientation="horizontal">
+            <EditText
+                android:id="@+id/sign_up_edit_id"
+                android:layout_weight="0.7"
+                android:layout_height="30dp"
+                android:autofillHints="이름"
+                android:background="@drawable/edittext_border"
+                android:layout_gravity="center"
+                android:layout_width="0dp"
+                android:singleLine="true" />
+            <Button
+                android:id="@+id/sign_up_btn_id_confirm"
+                android:layout_weight="0.3"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:backgroundTint="#FADA7A"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:layout_marginLeft="2dp"
+                android:textSize="8sp"
+                android:text="@string/signup_btn_id_confim"
+                app:cornerRadius="20dp"
                 />
-
+            </LinearLayout>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="ID는 영문,숫자 조합만 가능"
+                android:text="@string/signup_tv_id_hint"
                 android:gravity="end"
                 android:textColor="@color/black"
                 android:textSize="12sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/signup_tv_password"
+                android:textColor="@color/black"
+                android:textSize="12sp"/>
+            <EditText
+                android:id="@+id/sign_up_edit_password"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:autofillHints="이름"
+                android:background="@drawable/edittext_border"
+                android:singleLine="true"
+                android:inputType="textPassword"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/signup_tv_password_hint"
+                android:gravity="end"
+                android:textColor="@color/black"
+                android:textSize="12sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/signup_tv_password_confirm"
+                android:textColor="@color/black"
+                android:textSize="12sp"/>
+            <EditText
+                android:id="@+id/sign_up_edit_password_confirm"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:autofillHints="이름"
+                android:background="@drawable/edittext_border"
+                android:layout_marginBottom="10dp"
+                android:singleLine="true"
+                android:inputType="textPassword"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/signup_tv_phone"
+                android:textColor="@color/black"
+                android:textSize="12sp"/>
+            <EditText
+                android:id="@+id/sign_up_edit_phone"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:autofillHints="이름"
+                android:background="@drawable/edittext_border"
+                android:layout_marginBottom="10dp"
+                android:inputType="phone"
+                android:maxLength="11"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/signup_text_gender"
+                android:text="@string/signup_tv_date"
+                android:textColor="@color/black"
+                android:textSize="12sp"/>
+            <EditText
+                android:id="@+id/sign_up_edit_date"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:autofillHints="이름"
+                android:background="@drawable/edittext_border"
+                android:layout_marginBottom="10dp"
+                android:inputType="date"
+                android:hint="@string/signup_tv_date_hint"
+                android:maxLength="8"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/signup_tv_gender"
                 android:textColor="@color/black"
                 android:textSize="12sp"/>
 
@@ -75,21 +171,20 @@
                     android:id="@+id/signUpGenderBoy"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="남성" />
+                    android:text="@string/signup_tv_gender_boy" />
 
                 <RadioButton
                     android:id="@+id/signUpGenderGirl"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:text="여성" />
-
+                    android:text="@string/signup_tv_gender_girl" />
             </RadioGroup>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/signup_text_date"
+                android:text="@string/signup_tv_marketing"
                 android:textColor="@color/black"
                 android:textSize="12sp"/>
             <LinearLayout
@@ -105,7 +200,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="SMS"
+                    android:text="@string/signup_tv_marketing_sms"
                    />
 
                 <CheckBox
@@ -117,9 +212,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="앱푸시"
+                    android:text="@string/signup_tv_marketing_app_push"
                     />
-
             </LinearLayout>
             <Button
                 android:id="@+id/loginButton"
@@ -128,12 +222,8 @@
                 android:backgroundTint="#FADA7A"
                 android:textColor="@color/black"
                 app:cornerRadius="20dp"
-                android:text="회원가입"/>
-
-
-
+                android:text="@string/signup_btn_sing_up"/>
         </LinearLayout>
-
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,4 +4,7 @@
     <style name="AppTheme" parent="Theme.MaterialComponents.Light">
         <item name="colorPrimary">#FADA7A</item> <!-- 기본 색상 변경 -->
     </style>
+    <style name="Theme.MyApp.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- 여기에 필요한 추가 스타일 설정 -->
+    </style>
 </resources>
