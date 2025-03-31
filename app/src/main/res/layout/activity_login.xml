@@ -30,7 +30,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Id"
-            android:layout_marginBottom="20dp"/>
+            android:paddingBottom="20dp"
+            android:layout_marginBottom="20dp"
+            android:singleLine="true"
+            android:inputType="text"/>
 
         <!-- 비밀번호 입력 -->
         <EditText
@@ -39,14 +42,22 @@
             android:layout_height="wrap_content"
             android:hint="Password"
             android:inputType="textPassword"
-            android:layout_marginBottom="20dp"/>
+            android:paddingBottom="20dp"
+            android:layout_marginBottom="20dp"
+            android:singleLine="true"
+            />
 
         <!-- 로그인 버튼 -->
         <Button
             android:id="@+id/loginButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="#FADA7A"
+            android:textColor="@color/black"
+            app:cornerRadius="20dp"
             android:text="Login"/>
+
+
         <TextView
             android:id="@+id/signUpLink"
             android:layout_width="wrap_content"
