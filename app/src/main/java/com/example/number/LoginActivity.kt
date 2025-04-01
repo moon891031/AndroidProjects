@@ -3,29 +3,22 @@ package com.example.number
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.text.InputType
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-
-
-import com.example.number.api.RetrofitInstance
-import com.example.number.model.LoginRequest
 import com.example.number.repository.UserRepository
 import com.example.number.model.UserInfo
 
 class LoginActivity : AppCompatActivity() {
 
     private val userRepository = UserRepository()
-    private lateinit var eyeIcon: ImageView
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,10 +26,10 @@ class LoginActivity : AppCompatActivity() {
         supportActionBar?.hide()
         setContentView(R.layout.activity_login)
 
-        val usernameEditText: EditText = findViewById(R.id.password)
-        val passwordEditText: EditText = findViewById(R.id.password)
+        val usernameEditText: EditText = findViewById(R.id.login_edit_id)
+        val passwordEditText: EditText = findViewById(R.id.login_edit_password)
 
-        val loginButton: Button = findViewById(R.id.loginButton)
+        val loginButton: Button = findViewById(R.id.login_btn_login)
 
         var isPasswordVisible = false // 초기 상태: 비밀번호 숨김
         passwordEditText.setOnTouchListener { _, event ->
@@ -72,7 +65,7 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
-        val signUpLink: TextView = findViewById(R.id.signUpLink)
+        val signUpLink: TextView = findViewById(R.id.login_tv_sign_up)
         signUpLink.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)

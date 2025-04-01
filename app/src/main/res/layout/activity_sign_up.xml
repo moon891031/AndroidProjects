@@ -27,7 +27,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="회원가입"/>
+                android:textSize="20dp"
+                android:layout_marginBottom="40dp"
+                android:text="@string/signup_tv_title"/>
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -294,7 +296,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/black"
                     android:text="@string/signup_tv_marketing_sms"
+
                    />
 
                 <CheckBox
@@ -307,6 +311,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/signup_tv_marketing_app_push"
+                    android:textColor="@color/black"
                     />
             </LinearLayout>
             <Button

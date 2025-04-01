@@ -33,7 +33,7 @@
                 />
 
             <EditText
-                android:id="@+id/username"
+                android:id="@+id/login_edit_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/login_hint_id"
@@ -46,7 +46,7 @@
 
             <!-- 비밀번호 입력 -->
             <EditText
-                android:id="@+id/password"
+                android:id="@+id/login_edit_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/login_hint_password"
@@ -80,7 +80,7 @@
             </LinearLayout>
             <!-- 로그인 버튼 -->
             <Button
-                android:id="@+id/loginButton"
+                android:id="@+id/login_btn_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#FADA7A"
@@ -89,7 +89,7 @@
                 app:cornerRadius="20dp" />
 
             <TextView
-                android:id="@+id/signUpLink"
+                android:id="@+id/login_tv_sign_up"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/login_tv_sign_up"

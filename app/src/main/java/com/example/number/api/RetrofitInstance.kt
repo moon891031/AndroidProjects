@@ -13,6 +13,9 @@ object RetrofitInstance {
             .build()
     }
 
+    val contactService: ContactService by lazy {
+        retrofit.create(ContactService::class.java)
+    }
     val api: ApiService by lazy {
         retrofit.create(ApiService::class.java)
     }
