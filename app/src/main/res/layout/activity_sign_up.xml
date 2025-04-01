@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -27,55 +28,83 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="회원가입"/>
-
-            <TextView
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/signup_tv_name"
-                android:textColor="@color/black"
-                android:textSize="12sp"/>
-            <EditText
-                android:id="@+id/sign_up_edit_name"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:autofillHints="이름"
-                android:background="@drawable/edittext_border"
-                android:layout_marginBottom="10dp"
-                android:singleLine="true" />
+                android:hint="@string/signup_tv_name"
+                android:layout_marginBottom="5dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:hintTextColor="@color/black"
+                app:boxStrokeColor="@color/red"
+                app:boxStrokeWidthFocused="1dp"
+                app:hintTextAppearance="@style/CustomHintTextAppearance"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp"
+                >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/sign_up_edit_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="12sp"
+                    android:minHeight="48dp"
+                    android:singleLine="true"
+                    android:maxLength="10"
+                    android:inputType="text"
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/signup_tv_id"
-                android:textColor="@color/black"
-                android:textSize="12sp"/>
+                  />
+            </com.google.android.material.textfield.TextInputLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:orientation="horizontal">
-            <EditText
-                android:id="@+id/sign_up_edit_id"
-                android:layout_weight="0.7"
-                android:layout_height="30dp"
-                android:autofillHints="이름"
-                android:background="@drawable/edittext_border"
-                android:layout_gravity="center"
-                android:layout_width="0dp"
-                android:singleLine="true" />
-            <Button
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_weight="0.7"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/signup_tv_id"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:hintTextColor="@color/black"
+                    app:boxStrokeColor="@color/blue"
+                    app:boxStrokeWidthFocused="1dp"
+                    app:hintTextAppearance="@style/CustomHintTextAppearance"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    >
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/sign_up_edit_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black"
+                        android:textSize="12sp"
+                        android:minHeight="48dp"
+                        android:singleLine="true"
+                        android:maxLength="16"
+                        android:inputType="text"
+
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
                 android:id="@+id/sign_up_btn_id_confirm"
                 android:layout_weight="0.3"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:backgroundTint="#FADA7A"
+                android:backgroundTint="@color/white"
                 android:textColor="@color/black"
                 android:layout_gravity="center"
-                android:layout_marginLeft="2dp"
-                android:textSize="8sp"
-                android:text="@string/signup_btn_id_confim"
-                app:cornerRadius="20dp"
+                android:layout_marginLeft="10dp"
+                android:textSize="12sp"
+                android:text="@string/signup_btn_id_confirm"
+
                 />
             </LinearLayout>
             <TextView
@@ -84,76 +113,141 @@
                 android:text="@string/signup_tv_id_hint"
                 android:gravity="end"
                 android:textColor="@color/black"
-                android:textSize="12sp"/>
-            <TextView
+                android:textSize="12sp"
+                android:layout_marginBottom="5dp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/signup_tv_password"
-                android:textColor="@color/black"
-                android:textSize="12sp"/>
-            <EditText
-                android:id="@+id/sign_up_edit_password"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:autofillHints="이름"
-                android:background="@drawable/edittext_border"
-                android:singleLine="true"
-                android:inputType="textPassword"
-                />
+                android:hint="@string/signup_tv_password"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:hintTextColor="@color/black"
+                app:boxStrokeColor="@color/yellow"
+                app:boxStrokeWidthFocused="1dp"
+                app:hintTextAppearance="@style/CustomHintTextAppearance"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp"
+                >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/sign_up_edit_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="12sp"
+                    android:minHeight="48dp"
+                    android:singleLine="true"
+                    android:maxLength="16"
+                    android:inputType="textPassword"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/signup_tv_password_hint"
                 android:gravity="end"
                 android:textColor="@color/black"
-                android:textSize="12sp"/>
-            <TextView
+                android:textSize="12sp"
+                android:layout_marginBottom="5dp"/>
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/signup_tv_password_confirm"
-                android:textColor="@color/black"
-                android:textSize="12sp"/>
-            <EditText
-                android:id="@+id/sign_up_edit_password_confirm"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:autofillHints="이름"
-                android:background="@drawable/edittext_border"
-                android:layout_marginBottom="10dp"
-                android:singleLine="true"
-                android:inputType="textPassword"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/signup_tv_phone"
-                android:textColor="@color/black"
-                android:textSize="12sp"/>
-            <EditText
-                android:id="@+id/sign_up_edit_phone"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:autofillHints="이름"
-                android:background="@drawable/edittext_border"
-                android:layout_marginBottom="10dp"
-                android:inputType="phone"
-                android:maxLength="11"/>
+                android:hint="@string/signup_tv_password_confirm"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:hintTextColor="@color/black"
+                app:boxStrokeColor="@color/green"
+                app:boxStrokeWidthFocused="1dp"
+                app:hintTextAppearance="@style/CustomHintTextAppearance"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp"
+                >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/sign_up_edit_password_confirm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="12sp"
+                    android:minHeight="48dp"
+                    android:singleLine="true"
+                    android:maxLength="16"
+                    android:inputType="textPassword"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
+                android:id="@+id/sign_up_tv_password_confirm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/signup_tv_date"
+                android:gravity="end"
                 android:textColor="@color/black"
                 android:textSize="12sp"/>
-            <EditText
-                android:id="@+id/sign_up_edit_date"
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:autofillHints="이름"
-                android:background="@drawable/edittext_border"
-                android:layout_marginBottom="10dp"
-                android:inputType="date"
-                android:hint="@string/signup_tv_date_hint"
-                android:maxLength="8"/>
+                android:layout_height="wrap_content"
+                android:hint="@string/signup_tv_phone"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:hintTextColor="@color/black"
+                app:boxStrokeColor="@color/blue"
+                app:boxStrokeWidthFocused="1dp"
+                app:hintTextAppearance="@style/CustomHintTextAppearance"
+                android:layout_marginBottom="5dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp"
+                >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/sign_up_edit_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="12sp"
+                    android:minHeight="48dp"
+                    android:singleLine="true"
+                    android:maxLength="11"
+                    android:inputType="number"
+
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/signup_tv_date"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:hintTextColor="@color/black"
+                app:boxStrokeColor="@color/violet"
+                app:boxStrokeWidthFocused="1dp"
+                app:hintTextAppearance="@style/CustomHintTextAppearance"
+                android:layout_marginBottom="5dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/sign_up_edit_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="date"
+                    android:maxLength="8"
+                    android:minHeight="48dp"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="12sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
 
             <TextView
                 android:layout_width="match_parent"

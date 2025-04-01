@@ -26,41 +26,65 @@
 
             <!-- ID 입력 -->
             <ImageView
-                android:layout_width="118dp"
-                android:layout_height="155dp"
+                android:layout_width="59dp"
+                android:layout_height="78dp"
                 android:src="@drawable/voda_logo"
-                android:layout_marginBottom="30dp"
+                android:layout_marginBottom="50dp"
                 />
 
             <EditText
                 android:id="@+id/username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Id"
+                android:hint="@string/login_hint_id"
+                android:fontFamily="@font/pretendard_regular"
                 android:paddingBottom="15dp"
                 android:layout_marginBottom="20dp"
                 android:singleLine="true"
-                android:inputType="text"/>
+                android:inputType="text"
+                android:textSize="13sp"/>
 
             <!-- 비밀번호 입력 -->
             <EditText
                 android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Password"
+                android:hint="@string/login_hint_password"
                 android:inputType="textPassword"
                 android:singleLine="true"
+                android:fontFamily="@font/pretendard_regular"
                 android:paddingBottom="15dp"
-                android:drawableEnd="@drawable/ic_eye_off"
-                android:drawableTint="@color/black"
-                android:drawablePadding="10dp"/>
+                android:paddingRight="10dp"
+                android:drawableEnd="@drawable/login_eye_off"
+                android:drawablePadding="10dp"
+                android:textSize="13sp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="start">
+                <CheckBox
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/login_tv_auto_login"
+                    android:layout_gravity="center"
+                    android:textSize="13sp"
+                    />
+
+            </LinearLayout>
             <!-- 로그인 버튼 -->
             <Button
                 android:id="@+id/loginButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#FADA7A"
-                android:text="Login"
+                android:text="@string/login_btn_login"
                 android:textColor="@color/black"
                 app:cornerRadius="20dp" />
 
@@ -68,11 +92,13 @@
                 android:id="@+id/signUpLink"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="회원가입"
-                android:textColor="@android:color/holo_blue_dark"
+                android:text="@string/login_tv_sign_up"
+                android:textColor="@color/black"
                 android:layout_marginTop="20dp"
                 android:clickable="true"
-                android:focusable="true"/>
+                android:focusable="true"
+
+                />
 
         </LinearLayout>
     </ScrollView>

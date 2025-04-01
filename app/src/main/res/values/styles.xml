@@ -7,4 +7,13 @@
     <style name="Theme.MyApp.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- 여기에 필요한 추가 스타일 설정 -->
     </style>
+
+    <style name="HintTextStyle">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/gray</item>
+    </style>
+    <style name="CustomHintTextAppearance" parent="TextAppearance.AppCompat">
+        <item name="android:textColorHint">@color/black</item> <!-- 힌트 텍스트 색상 -->
+        <item name="android:textSize">12sp</item>
+    </style>
 </resources>

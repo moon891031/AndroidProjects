@@ -33,7 +33,7 @@ class LoginActivity : AppCompatActivity() {
         supportActionBar?.hide()
         setContentView(R.layout.activity_login)
 
-        val usernameEditText: EditText = findViewById(R.id.username)
+        val usernameEditText: EditText = findViewById(R.id.password)
         val passwordEditText: EditText = findViewById(R.id.password)
 
         val loginButton: Button = findViewById(R.id.loginButton)
@@ -48,10 +48,10 @@ class LoginActivity : AppCompatActivity() {
 
                     if (isPasswordVisible) {
                         passwordEditText.transformationMethod = HideReturnsTransformationMethod.getInstance()
-                        passwordEditText.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_eye_off, 0)
+                        passwordEditText.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.login_eye_off, 0)
                     } else {
                         passwordEditText.transformationMethod = PasswordTransformationMethod.getInstance()
-                        passwordEditText.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_eye_off, 0)
+                        passwordEditText.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.login_eye_on, 0)
                     }
 
                     // 커서 위치 유지

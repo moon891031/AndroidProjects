@@ -4,24 +4,34 @@
     <string name="nav_contacts">연락처</string>
     <string name="nav_callLog" >통화기록</string>
     <string name="nav_settings">설정</string>
+
+
     <string name="signup_tv_name">이름(실명)<font color="#FF0000">*</font></string>
     <string name="signup_tv_id">아이디(ID)<font color="#FF0000">*</font></string>
     <string name="signup_tv_password">비밀번호<font color="#FF0000">*</font></string>
     <string name="signup_tv_password_confirm">비밀번호 확인<font color="#FF0000">*</font></string>
     <string name="signup_tv_phone">핸드폰 번호<font color="#FF0000">*</font></string>
-    <string name="signup_tv_date">생년월일(선택)</string>
+    <string name="signup_tv_date">생년월일(YYYYMMDD)</string>
     <string name="signup_tv_date_hint">YYYYMMDD</string>
     <string name="signup_tv_gender">성별(선택)</string>
     <string name="signup_tv_marketing">마케팅 정보수신동의(선택)</string>
     <string name="signup_tv_id_hint">ID는 영문,숫자 조합만 가능</string>
     <string name="signup_tv_password_hint">8~16자,영어 대문자,숫자,특수문자 조합 추천</string>
     <string name="signup_tv_phone_hint">여러대의 휴대폰 사용시 가장 많이 사용하는 번호</string>
-    <string name="signup_btn_id_confim">중복확인</string>
+    <string name="signup_btn_id_confirm">중복확인</string>
     <string name="signup_btn_sing_up">회원가입</string>
     <string name="signup_tv_gender_boy">남성</string>
     <string name="signup_tv_gender_girl">여성</string>
     <string name="signup_tv_marketing_sms">SMS</string>
     <string name="signup_tv_marketing_app_push">앱 푸시</string>
+
+    <string name="login_tv_auto_login">자동로그인</string>
+    <string name="login_btn_login">로그인</string>
+    <string name="login_tv_find_id_pw">ID/PW 찾기</string>
+    <string name="login_tv_sign_up">회원가입</string>
+    <string name="login_hint_id">ID</string>
+    <string name="login_hint_password">Password</string>
+
 
 
 </resources>

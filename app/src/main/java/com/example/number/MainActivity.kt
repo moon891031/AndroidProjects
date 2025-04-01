@@ -153,6 +153,7 @@ class MainActivity : AppCompatActivity() {
         }
         cursor?.close()
     }
+    //동기화버튼 누르면 다이얼로그 보여주는 함수
     private fun showContactListDialog(contactList: List<String>) {
         val builder = AlertDialog.Builder(this)
         //builder.setTitle("연락처 목록")
@@ -172,13 +173,6 @@ class MainActivity : AppCompatActivity() {
         // 다이얼로그 보여주기
         builder.show()
     }
-    private fun showAlertDialog(message: String) {
-        val builder = AlertDialog.Builder(this)
-        builder.setMessage(message)
-            .setPositiveButton("OK", DialogInterface.OnClickListener { dialog, _ -> dialog.dismiss() })
-            .show()
-    }
-
     // 권한 요청 결과 처리
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
@@ -215,13 +209,10 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
+    //오버레이 서비스 시작함수
     private fun startOverlayService() {
         val serviceIntent = Intent(this, OverlayService::class.java)
         startService(serviceIntent)
     }
 
-    companion object {
-        const val REQUEST_OVERLAY_PERMISSION = 101
-    }
 }

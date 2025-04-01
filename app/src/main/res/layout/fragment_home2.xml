@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
-    <!-- 기존 TextView -->
     <TextView
         android:id="@+id/text_home"
         android:layout_width="match_parent"
@@ -20,8 +19,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <!-- 기존 Button -->
     <Button
         android:id="@+id/button_change_text"
         android:layout_width="wrap_content"
@@ -30,29 +27,4 @@
         app:layout_constraintTop_toBottomOf="@id/text_home"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
-
-    <!-- 추가된 TextInputLayout -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/text_input_layout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="@string/signup_tv_id"
-        app:hintTextColor="@color/black"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:boxStrokeColor="@color/blue"
-        app:boxStrokeWidthFocused="2dp"
-        app:hintTextAppearance="@style/CustomHintTextAppearance"
-        app:layout_constraintTop_toBottomOf="@id/button_change_text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black"
-            android:textSize="16sp"/>
-    </com.google.android.material.textfield.TextInputLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
