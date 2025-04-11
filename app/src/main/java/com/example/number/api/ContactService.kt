@@ -11,6 +11,7 @@ interface ContactService {
     suspend fun getContacts(
         @Query("userId") userId: Int,
         @Query("page") page: Int,
-        @Query("pageSize") pageSize: Int
+        @Query("pageSize") pageSize: Int,
+        @Query("searchText") query: String? = null
     ): Response<ContactResponse> // ContactResponse는 반환 받을 데이터의 구조
 }

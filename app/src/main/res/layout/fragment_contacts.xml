@@ -5,6 +5,17 @@
     android:orientation="vertical"
     android:padding="10dp">
 
+    <EditText
+        android:id="@+id/editSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="이름을 입력하세요" />
+
+    <Button
+        android:id="@+id/btnSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="검색" />
     <TextView
         android:id="@+id/textContacts"
         android:layout_width="match_parent"
@@ -15,7 +26,8 @@
         android:paddingBottom="10dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewContacts"
+        android:id="@+id/recyclerContacts"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent"/>
+
 </LinearLayout>
