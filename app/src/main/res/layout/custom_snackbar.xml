@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:padding="12dp"
+    android:layout_margin="12dp"
+
+    android:background="@drawable/bg_snackbar"
+    android:elevation="6dp">
+
+    <ImageView
+        android:id="@+id/snackbar_icon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/voda_logo"
+        android:layout_marginEnd="8dp" />
+
+    <TextView
+        android:id="@+id/snackbar_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="메시지"
+        android:textColor="@android:color/white"
+        android:textSize="15sp"
+        android:maxLines="2" />
+</LinearLayout>

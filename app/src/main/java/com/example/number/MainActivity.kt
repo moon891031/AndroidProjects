@@ -28,11 +28,6 @@ import android.content.ContentResolver
 import android.content.DialogInterface
 import android.widget.ArrayAdapter
 import android.widget.ListView
-import android.service.notification.NotificationListenerService
-import android.service.notification.StatusBarNotification
-
-
-
 
 class MainActivity : AppCompatActivity() {
 
@@ -58,6 +53,7 @@ class MainActivity : AppCompatActivity() {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS)
                 != PackageManager.PERMISSION_GRANTED
             ) {
+                Log.d("[moon]MainActivity_OnCLick", "연락처 권한이 없으므로 권한요청.")
                 ActivityCompat.requestPermissions(
                     this, arrayOf(Manifest.permission.READ_CONTACTS), REQUEST_CONTACTS_PERMISSION
                 )
@@ -72,7 +68,9 @@ class MainActivity : AppCompatActivity() {
             ActivityResultContracts.StartActivityForResult()
         ) { result ->
             if (Settings.canDrawOverlays(this)) {
-                startOverlayService()
+                Log.d("[moon]MainActivity", "오버레이 권한 허용 되어있습니다.")
+                //startOverlayService()
+
             } else {
                 Toast.makeText(this, "오버레이 권한이 허용되지 않았습니다.", Toast.LENGTH_SHORT).show()
             }
@@ -80,7 +78,8 @@ class MainActivity : AppCompatActivity() {
 
         // 오버레이 권한이 이미 허용되었는지 확인
         if (Settings.canDrawOverlays(this)) {
-            startOverlayService()
+            Log.d("[moon]MainActivity", "오버레이 권한 허용 되어있습니다.")
+            //startOverlayService()
         } else {
             // 오버레이 권한 요청
             val intent = Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION)
@@ -194,17 +193,17 @@ class MainActivity : AppCompatActivity() {
                     ContextCompat.startForegroundService(this, serviceIntent)
                 } else {
                     // 권한 거부 시 처리
-                    Log.e("Permission", "전화 상태 권한이 거부되었습니다.")
+                    Log.e("[moon]Main_Permission", "전화 상태 권한이 거부되었습니다.")
                 }
             }
 
             NOTIFICATION_REQUEST_CODE -> {
                 if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     // 알림 권한 허용 시 처리
-                    Log.d("Permission", "알림 권한이 허용되었습니다.")
+                    Log.d("[moon]Main_Permission", "알림 권한이 허용되었습니다.")
                 } else {
                     // 알림 권한 거부 시 처리
-                    Log.e("Permission", "알림 권한이 거부되었습니다.")
+                    Log.e("[moon]Main_Permission", "알림 권한이 거부되었습니다.")
                 }
             }
         }

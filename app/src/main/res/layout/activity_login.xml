@@ -31,33 +31,66 @@
                 android:src="@drawable/voda_logo"
                 android:layout_marginBottom="50dp"
                 />
-
-            <EditText
-                android:id="@+id/login_edit_id"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/login_hint_id"
-                android:fontFamily="@font/pretendard_regular"
-                android:paddingBottom="15dp"
-                android:layout_marginBottom="20dp"
-                android:singleLine="true"
-                android:inputType="text"
-                android:textSize="13sp"/>
+                android:layout_marginBottom="5dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:hintTextColor="@color/black"
+                app:boxStrokeColor="@color/red"
+                app:boxStrokeWidthFocused="1dp"
+                app:hintTextAppearance="@style/CustomHintTextAppearance"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp"
+                >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/login_edit_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="12sp"
+                    android:minHeight="48dp"
+                    android:singleLine="true"
+                    android:maxLength="10"
+                    android:inputType="text"
 
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
             <!-- 비밀번호 입력 -->
-            <EditText
-                android:id="@+id/login_edit_password"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/login_hint_password"
-                android:inputType="textPassword"
-                android:singleLine="true"
-                android:fontFamily="@font/pretendard_regular"
-                android:paddingBottom="15dp"
-                android:paddingRight="10dp"
-                android:drawableEnd="@drawable/login_eye_off"
-                android:drawablePadding="10dp"
-                android:textSize="13sp"/>
+                android:layout_marginBottom="5dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:hintTextColor="@color/black"
+                app:boxStrokeColor="@color/red"
+                app:boxStrokeWidthFocused="1dp"
+                app:hintTextAppearance="@style/CustomHintTextAppearance"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp"
+                >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/login_edit_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="12sp"
+                    android:minHeight="48dp"
+                    android:singleLine="true"
+                    android:drawableEnd="@drawable/login_eye_off"
+                    android:maxLength="10"
+                    android:inputType="textPassword"
+
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
