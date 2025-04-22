@@ -24,11 +24,11 @@
     <string name="signup_tv_gender_girl">여성</string>
     <string name="signup_tv_marketing_sms">SMS</string>
     <string name="signup_tv_marketing_app_push">앱 푸시</string>
-
+    <string name="signup_btn_phone_confirm">중복확인</string>
     <string name="login_tv_auto_login">자동로그인</string>
     <string name="login_btn_login">로그인</string>
     <string name="login_tv_find_id_pw">ID/PW 찾기</string>
-    <string name="login_tv_sign_up">회원가입</string>
+    <string name="login_btn_sign_up">회원가입</string>
     <string name="login_hint_id">ID</string>
     <string name="login_hint_password">Password</string>
 

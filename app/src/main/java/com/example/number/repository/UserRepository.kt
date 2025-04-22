@@ -9,6 +9,6 @@ class UserRepository {
 
     suspend fun login(username: String, password: String): Response<UserInfo> {
         val loginRequest = LoginRequest(username, password)
-        return RetrofitInstance.api.login(loginRequest)
+        return RetrofitInstance.loginService.login(loginRequest)
     }
 }

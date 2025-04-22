@@ -3,15 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_call_log">
 
-    <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.example.number.ui.home.HomeFragment"
-        android:label="@string/nav_home"
-        tools:layout="@layout/fragment_home" />
-
-    <fragment
+      <fragment
         android:id="@+id/navigation_contacts"
         android:name="com.example.number.ui.contacts.ContactsFragment"
         android:label="@string/nav_contacts"

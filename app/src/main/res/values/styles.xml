@@ -1,19 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light">
-        <item name="colorPrimary">#FADA7A</item> <!-- 기본 색상 변경 -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:windowAnimationStyle">@style/NoAnimation</item>
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+        <item name="android:textSize">11sp</item>
     </style>
+    <style name="NoAnimation" parent="@android:style/Animation">
+        <item name="android:activityOpenEnterAnimation">@null</item>
+        <item name="android:activityOpenExitAnimation">@null</item>
+        <item name="android:activityCloseEnterAnimation">@null</item>
+        <item name="android:activityCloseExitAnimation">@null</item>
+    </style>
+
+
     <style name="Theme.MyApp.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- 여기에 필요한 추가 스타일 설정 -->
     </style>
 
     <style name="HintTextStyle">
-        <item name="android:textSize">13sp</item>
+
         <item name="android:textColor">@color/gray</item>
     </style>
     <style name="CustomHintTextAppearance" parent="TextAppearance.AppCompat">
         <item name="android:textColorHint">@color/black</item> <!-- 힌트 텍스트 색상 -->
+
+    </style>
+    <style name="MyTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:textColorHint">@color/black</item>
+        <item name="boxStrokeColor">@color/custom_stroke_color</item>
+        <item name="color">@color/black</item>
+        <item name="boxStrokeWidthFocused">1dp</item>
+        <item name="hintTextAppearance">@style/CustomHintTextAppearance</item>
+        <item name="boxCornerRadiusTopStart">10dp</item>
+        <item name="boxCornerRadiusTopEnd">10dp</item>
+        <item name="boxCornerRadiusBottomStart">10dp</item>
+        <item name="boxCornerRadiusBottomEnd">10dp</item>
+    </style>
+    <style name="SignUpEditText">
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textColorHint">@color/black</item>
+        <item name="android:singleLine">true</item>
+
+    </style>
+    <style name="BottomNavTextBold" parent="TextAppearance.AppCompat.Caption">
         <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="BottomNavTextNormal" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">normal</item>
     </style>
 </resources>
+

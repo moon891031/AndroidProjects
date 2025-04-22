@@ -13,21 +13,21 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.widget.ImageButton
 import com.example.number.databinding.ActivityMainBinding
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.number.service.ForegroundService
-import com.example.number.service.OverlayService
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.provider.ContactsContract
 import android.content.ContentResolver
 import android.content.DialogInterface
+import android.view.MotionEvent
 import android.widget.ArrayAdapter
 import android.widget.ListView
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -39,27 +39,62 @@ class MainActivity : AppCompatActivity() {
     // ActivityResultLauncher를 사용하여 오버레이 권한 요청 처리
     private lateinit var overlayPermissionLauncher: ActivityResultLauncher<Intent>
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        supportActionBar?.hide()
+        //supportActionBar?.hide()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val syncButton: ImageButton = findViewById(R.id.home_sync_button)
-        syncButton.setOnClickListener {
-            Toast.makeText(this, "버튼 눌림", Toast.LENGTH_SHORT).show()
+        var dX = 0f
+        var dY = 0f
+        var downRawX = 0f
+        var downRawY = 0f
+        val clickThreshold = 10
+        val syncButton = findViewById<ImageButton>(R.id.home_sync_button)
 
-            // 권한 체크 후 연락처 정보 가져오기
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS)
-                != PackageManager.PERMISSION_GRANTED
-            ) {
-                Log.d("[moon]MainActivity_OnCLick", "연락처 권한이 없으므로 권한요청.")
-                ActivityCompat.requestPermissions(
-                    this, arrayOf(Manifest.permission.READ_CONTACTS), REQUEST_CONTACTS_PERMISSION
-                )
-            } else {
-                // 이미 권한이 있으면 연락처 가져오기
-                getContacts()
+        syncButton.setOnTouchListener { v, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    downRawX = event.rawX
+                    downRawY = event.rawY
+                    dX = v.x - downRawX
+                    dY = v.y - downRawY
+                    true
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    v.animate()
+                        .x(event.rawX + dX)
+                        .y(event.rawY + dY)
+                        .setDuration(0)
+                        .start()
+                    true
+                }
+                MotionEvent.ACTION_UP -> {
+                    val upRawX = event.rawX
+                    val upRawY = event.rawY
+                    val deltaX = Math.abs(upRawX - downRawX)
+                    val deltaY = Math.abs(upRawY - downRawY)
+
+                    // 움직인 거리가 작으면 클릭으로 간주
+                    if (deltaX < clickThreshold && deltaY < clickThreshold) {
+                        Toast.makeText(this, "버튼 눌림", Toast.LENGTH_SHORT).show()
+
+                        // 권한 체크 후 연락처 정보 가져오기
+                        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS)
+                            != PackageManager.PERMISSION_GRANTED
+                        ) {
+                            Log.d("[moon]MainActivity_OnCLick", "연락처 권한이 없으므로 권한요청.")
+                            ActivityCompat.requestPermissions(
+                                this, arrayOf(Manifest.permission.READ_CONTACTS), REQUEST_CONTACTS_PERMISSION
+                            )
+                        } else
+                            getContacts()
+                    }
+                    true
+                }
+
+                else -> false
             }
         }
 
@@ -69,8 +104,6 @@ class MainActivity : AppCompatActivity() {
         ) { result ->
             if (Settings.canDrawOverlays(this)) {
                 Log.d("[moon]MainActivity", "오버레이 권한 허용 되어있습니다.")
-                //startOverlayService()
-
             } else {
                 Toast.makeText(this, "오버레이 권한이 허용되지 않았습니다.", Toast.LENGTH_SHORT).show()
             }
@@ -79,13 +112,11 @@ class MainActivity : AppCompatActivity() {
         // 오버레이 권한이 이미 허용되었는지 확인
         if (Settings.canDrawOverlays(this)) {
             Log.d("[moon]MainActivity", "오버레이 권한 허용 되어있습니다.")
-            //startOverlayService()
         } else {
             // 오버레이 권한 요청
             val intent = Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION)
             overlayPermissionLauncher.launch(intent) // 권한 요청
         }
-
         // 전화 상태 권한 요청
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE)
             != PackageManager.PERMISSION_GRANTED
@@ -113,12 +144,14 @@ class MainActivity : AppCompatActivity() {
 
         val navView: BottomNavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
+        /*
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_contacts, R.id.navigation_call_log, R.id.navigation_settings
+                R.id.navigation_call_log,  R.id.navigation_contacts, R.id.navigation_settings
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
+          */
         navView.setupWithNavController(navController)
     }
 
@@ -129,7 +162,6 @@ class MainActivity : AppCompatActivity() {
             ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
             null, null, null, null
         )
-
         if (cursor != null && cursor.moveToFirst()) {
             val contactList = mutableListOf<String>()
 
@@ -207,11 +239,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-    }
-    //오버레이 서비스 시작함수
-    private fun startOverlayService() {
-        val serviceIntent = Intent(this, OverlayService::class.java)
-        startService(serviceIntent)
     }
 
 }

@@ -25,28 +25,14 @@
             android:padding="20dp">
 
             <!-- ID 입력 -->
-            <ImageView
-                android:layout_width="59dp"
-                android:layout_height="78dp"
-                android:src="@drawable/voda_logo"
-                android:layout_marginBottom="50dp"
-                />
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/login_hint_id"
-                android:layout_marginBottom="5dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                app:hintTextColor="@color/black"
-                app:boxStrokeColor="@color/red"
-                app:boxStrokeWidthFocused="1dp"
-                app:hintTextAppearance="@style/CustomHintTextAppearance"
-                app:boxCornerRadiusBottomStart="10dp"
-                app:boxCornerRadiusBottomEnd="10dp"
-                app:boxCornerRadiusTopEnd="10dp"
-                app:boxCornerRadiusTopStart="10dp"
+                style="@style/MyTextInputLayoutStyle"
                 >
                 <com.google.android.material.textfield.TextInputEditText
+                    style="@style/MyTextInputLayoutStyle"
                     android:id="@+id/login_edit_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -65,16 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/login_hint_password"
-                android:layout_marginBottom="5dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                app:hintTextColor="@color/black"
-                app:boxStrokeColor="@color/red"
-                app:boxStrokeWidthFocused="1dp"
-                app:hintTextAppearance="@style/CustomHintTextAppearance"
-                app:boxCornerRadiusBottomStart="10dp"
-                app:boxCornerRadiusBottomEnd="10dp"
-                app:boxCornerRadiusTopEnd="10dp"
-                app:boxCornerRadiusTopStart="10dp"
+                style="@style/MyTextInputLayoutStyle"
                 >
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/login_edit_password"
@@ -116,22 +93,21 @@
                 android:id="@+id/login_btn_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#FADA7A"
+                android:backgroundTint="@color/black"
                 android:text="@string/login_btn_login"
-                android:textColor="@color/black"
                 app:cornerRadius="20dp" />
 
-            <TextView
-                android:id="@+id/login_tv_sign_up"
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/login_btn_sign_up"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/login_tv_sign_up"
-                android:textColor="@color/black"
-                android:layout_marginTop="20dp"
-                android:clickable="true"
-                android:focusable="true"
+                android:backgroundTint="@color/black"
+                android:text="@string/login_btn_sign_up"
+                app:cornerRadius="20dp" />
 
-                />
+
+
+
 
         </LinearLayout>
     </ScrollView>

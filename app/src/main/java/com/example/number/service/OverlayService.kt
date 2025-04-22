@@ -19,8 +19,11 @@ class OverlayService : Service() {
     override fun onCreate() {
         super.onCreate()
 
-        // 오버레이를 띄운다.
+
+    }
+    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         showOverlay()
+        return START_NOT_STICKY
     }
 
     private fun showOverlay() {

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 포커스 상태 -->
+    <item android:color="@color/black" android:state_focused="true"/>
+
+    <!-- 기본 상태 (비포커스) -->
+    <item android:color="@color/gray"/>
+</selector>
