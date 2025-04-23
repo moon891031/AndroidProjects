@@ -8,17 +8,14 @@
       <fragment
         android:id="@+id/navigation_contacts"
         android:name="com.example.number.ui.contacts.ContactsFragment"
-        android:label="@string/nav_contacts"
         tools:layout="@layout/fragment_contacts" />
 
     <fragment
         android:id="@+id/navigation_call_log"
         android:name="com.example.number.ui.calllog.CallLogFragment"
-        android:label="@string/nav_callLog"
         tools:layout="@layout/fragment_call_log" />
     <fragment
         android:id="@+id/navigation_settings"
         android:name="com.example.number.ui.settings.SettingFragment"
-        android:label="@string/nav_settings"
         tools:layout="@layout/fragment_settings" />
 </navigation>

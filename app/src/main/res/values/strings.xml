@@ -31,7 +31,13 @@
     <string name="login_btn_sign_up">회원가입</string>
     <string name="login_hint_id">ID</string>
     <string name="login_hint_password">Password</string>
-
+    <string name="settings_btn_user_info">내 정보 보기</string>
+    <string name="settings_btn_verified_numbers">인증된 번호 관리</string>
+    <string name="settings_btn_subscription_payment">구독 및 결제</string>
+    <string name="settings_btn_notifications">알림 설정</string>
+    <string name="settings_btn_terms_conditions">약관 확인</string>
+    <string name="settings_btn_support">1:1 문의하기</string>
+    <string name="settings_btn_app_version">앱 버전</string>
 
 
 </resources>

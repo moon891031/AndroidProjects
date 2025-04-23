@@ -1,22 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.settings.SettingFragment">
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center"
+
+    >
 
     <TextView
         android:id="@+id/text_settings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:text="로그인한 유저 이름"
         android:textAlignment="center"
+        android:fontFamily="@font/pretendard_bold"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_marginBottom="40dp" />
+
+    <com.google.android.material.button.MaterialButton
+        style="@style/SettingsButtonStyle"
+        android:id="@+id/btn_user_info"
+        android:text="@string/settings_btn_user_info"
+   />
+
+    <com.google.android.material.button.MaterialButton
+        style="@style/SettingsButtonStyle"
+        android:id="@+id/btn_verified_numbers"
+        android:text="@string/settings_btn_verified_numbers"
+         />
+
+    <com.google.android.material.button.MaterialButton
+        style="@style/SettingsButtonStyle"
+        android:id="@+id/btn_subscription_payment"
+        android:text="@string/settings_btn_subscription_payment"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        style="@style/SettingsButtonStyle"
+        android:id="@+id/btn_notifications"
+        android:text="@string/settings_btn_notifications"
+         />
+
+    <com.google.android.material.button.MaterialButton
+        style="@style/SettingsButtonStyle"
+        android:id="@+id/btn_terms_conditions"
+        android:text="@string/settings_btn_terms_conditions"
+       />
+
+    <com.google.android.material.button.MaterialButton
+        style="@style/SettingsButtonStyle"
+        android:id="@+id/btn_support"
+        android:text="@string/settings_btn_support"
+       />
+
+    <com.google.android.material.button.MaterialButton
+        style="@style/SettingsButtonStyle"
+        android:id="@+id/btn_app_version"
+        android:text="@string/settings_btn_app_version"
+       />
+
+</LinearLayout>

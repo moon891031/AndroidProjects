@@ -1,29 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/red">
 
-    <!-- 선택된 상태일 때 -->
-    <item android:state_checked="true">
-        <layer-list>
-
-            <!-- 배경 투명 -->
-            <item android:drawable="@android:color/transparent" />
-
-            <!-- 하단 70% 길이 선 -->
-            <item android:gravity="bottom">
-                <inset
-                    android:insetLeft="15dp"
-                    android:insetRight="15dp">
-                    <shape android:shape="rectangle">
-                        <size android:height="2dp" />
-                        <solid android:color="#000000" />
-                    </shape>
-                </inset>
-            </item>
-        </layer-list>
-    </item>
-
-    <!-- 선택되지 않은 상태일 때 -->
     <item>
-        <color android:color="@android:color/transparent" />
+        <selector>
+            <!-- 선택된 상태 -->
+            <item android:state_checked="true">
+                <layer-list>
+                    <!-- 배경 투명 -->
+                    <item android:drawable="@android:color/transparent" />
+
+                    <!-- 하단 선 (중앙 두꺼운 그라데이션) -->
+                    <item android:gravity="bottom">
+                        <inset
+                            android:insetLeft="15dp"
+                            android:insetRight="15dp">
+                            <shape android:shape="rectangle">
+                                <gradient
+                                    android:type="linear"
+                                    android:angle="0"
+                                    android:startColor="#00000000"
+                                    android:centerColor="#FF000000"
+                                    android:endColor="#00000000"
+                                    android:centerX="0.5" />
+                                <size android:height="3dp" />
+                            </shape>
+                        </inset>
+                    </item>
+                </layer-list>
+            </item>
+
+            <!-- 선택 안 됐을 때 -->
+            <item>
+                <color android:color="@android:color/transparent" />
+            </item>
+        </selector>
     </item>
-</selector>
+</ripple>
