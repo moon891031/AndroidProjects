@@ -27,6 +27,11 @@ import android.content.DialogInterface
 import android.view.MotionEvent
 import android.widget.ArrayAdapter
 import android.widget.ListView
+import android.app.role.RoleManager
+
+
+
+
 
 
 class MainActivity : AppCompatActivity() {
@@ -39,11 +44,35 @@ class MainActivity : AppCompatActivity() {
     // ActivityResultLauncher를 사용하여 오버레이 권한 요청 처리
     private lateinit var overlayPermissionLauncher: ActivityResultLauncher<Intent>
 
+    private val requestPermissions = registerForActivityResult(
+        ActivityResultContracts.RequestMultiplePermissions()
+    ) { permissions ->
+        val allGranted = permissions.values.all { it }
+        if (allGranted) {
+            checkCallScreeningRole()
+        } else {
+            Toast.makeText(this, "필수 권한이 필요합니다", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private val requestRoleLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == RESULT_OK) {
+            Toast.makeText(this, "Call Screening Role 승인 완료", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(this, "Role 승인 거부됨", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+
+
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
         binding = ActivityMainBinding.inflate(layoutInflater)
+        requestAllPermissions()
         setContentView(binding.root)
 
         var dX = 0f
@@ -154,6 +183,36 @@ class MainActivity : AppCompatActivity() {
           */
         navView.setupWithNavController(navController)
     }
+
+    private fun requestAllPermissions() {
+        val permissions = arrayOf(
+            Manifest.permission.READ_PHONE_STATE,
+            Manifest.permission.READ_CALL_LOG
+        )
+
+        val notGranted = permissions.filter {
+            ContextCompat.checkSelfPermission(this, it) != PackageManager.PERMISSION_GRANTED
+        }
+
+        if (notGranted.isEmpty()) {
+            checkCallScreeningRole()
+        } else {
+            requestPermissions.launch(notGranted.toTypedArray())
+        }
+    }
+
+    private fun checkCallScreeningRole() {
+        val roleManager = getSystemService(RoleManager::class.java)
+        if (roleManager.isRoleAvailable(RoleManager.ROLE_CALL_SCREENING)) {
+            if (!roleManager.isRoleHeld(RoleManager.ROLE_CALL_SCREENING)) {
+                val intent = roleManager.createRequestRoleIntent(RoleManager.ROLE_CALL_SCREENING)
+                requestRoleLauncher.launch(intent)
+            } else {
+                Toast.makeText(this, "이미 Role 승인 완료됨", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
 
     // 연락처 정보를 가져오는 함수
     private fun getContacts() {

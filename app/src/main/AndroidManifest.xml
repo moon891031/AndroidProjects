@@ -7,15 +7,14 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_PHONE_CALL" />
     <uses-permission android:name="android.permission.MANAGE_OWN_CALLS" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
-    <!-- DIALER 역할을 부여받은 앱만 전화 관리 관련 권한을 사용할 수 있음 -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-    <uses-permission android:name="android.permission.DIALER" />
-    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
-    <uses-permission android:name="android.permission.READ_CALL_LOG"/>
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_CALL_LOG" />
+    <uses-permission android:name="android.permission.BIND_SCREENING_SERVICE" tools:ignore="ProtectedPermissions" />
+
     <application
 
         android:allowBackup="true"
@@ -30,6 +29,15 @@
         tools:targetApi="31">
         <service android:name=".service.OverlayService"
             android:permission="android.permission.SYSTEM_ALERT_WINDOW" />
+
+        <service
+            android:name=".service.MyCallScreeningService"
+            android:permission="android.permission.BIND_SCREENING_SERVICE"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.telecom.CallScreeningService" />
+            </intent-filter>
+        </service>
         <service
             android:name=".service.ForegroundService"
             android:enabled="true"
