@@ -323,5 +323,12 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+    private fun logout() {
+        val prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE)
+        prefs.edit().clear().apply()
+
+        startActivity(Intent(this, LoginActivity::class.java))
+        finish()
+    }
 
 }

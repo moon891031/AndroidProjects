@@ -140,6 +140,7 @@
 
                />
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/sign_up_input_layout_password_confirm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/signup_tv_password_confirm"

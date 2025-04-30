@@ -1,6 +1,8 @@
 package com.example.number.model
 
 data class LoginRequest(
-    val username: String,
-    val password: String
+    val loginId: String,
+    val password: String,
+    val deviceId : String,
+    val phoneNumber : String,
 )

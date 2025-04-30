@@ -41,6 +41,13 @@
     <string name="settings_btn_terms_conditions">약관 확인</string>
     <string name="settings_btn_support">1:1 문의하기</string>
     <string name="settings_btn_app_version">앱 버전</string>
+    <string name="find_id_password_tv_title">ID/PW 찾기</string>
+    <string name="find_id_password_tv_find_id">아이디 찾기</string>
+    <string name="find_id_password_tv_change_password">비밀번호 변경하기</string>
+    <string name="find_id_password_tv_change_password_id">아이디<font color="#FF0000">*</font></string>
+    <string name="find_id_password_et_id_hint">아이디<font color="#FF0000">*</font></string>
+    <string name="find_id_password_btn_verify_id">본인인증</string>
+    <string name="find_id_password_btn_verify_password">본인인증</string>
 
 
 </resources>

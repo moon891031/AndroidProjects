@@ -1,17 +1,25 @@
 package com.example.number
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.app.ActivityOptions
+import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.provider.Settings
+import android.telephony.TelephonyManager
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.transition.TransitionInflater
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -21,6 +29,9 @@ import com.example.number.model.UserInfo
 class LoginActivity : AppCompatActivity() {
 
     private val userRepository = UserRepository()
+    private val PERMISSION_REQUEST_CODE = 100
+    private lateinit var usernameEditText: EditText
+    private lateinit var passwordEditText: EditText
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,82 +39,94 @@ class LoginActivity : AppCompatActivity() {
         supportActionBar?.hide()
         window.enterTransition = TransitionInflater.from(this).inflateTransition(R.transition.slide)
         window.exitTransition = TransitionInflater.from(this).inflateTransition(R.transition.slide)
-
         setContentView(R.layout.activity_login)
 
-
-        val usernameEditText: EditText = findViewById(R.id.login_edit_id)
-        val passwordEditText: EditText = findViewById(R.id.login_edit_password)
+        usernameEditText = findViewById(R.id.login_edit_id)
+        passwordEditText = findViewById(R.id.login_edit_password)
         val loginButton: Button = findViewById(R.id.login_btn_login)
-        var isPasswordVisible = false // 초기 상태: 비밀번호 숨김
 
-
-        //패스워드 on/off
+        var isPasswordVisible = false
         passwordEditText.setOnTouchListener { _, event ->
-            val DRAWABLE_END = 2 // 우측 아이콘의 인덱스
-            if (event.action == android.view.MotionEvent.ACTION_UP) {
-                if (event.rawX >= (passwordEditText.right - passwordEditText.compoundDrawables[DRAWABLE_END].bounds.width())) {
-                    // 비밀번호 보이기/숨기기 토글
-                    isPasswordVisible = !isPasswordVisible
+            val DRAWABLE_END = 2
+            if (event.action == android.view.MotionEvent.ACTION_UP &&
+                event.rawX >= (passwordEditText.right - passwordEditText.compoundDrawables[DRAWABLE_END].bounds.width())
+            ) {
+                isPasswordVisible = !isPasswordVisible
+                passwordEditText.transformationMethod =
+                    if (isPasswordVisible) HideReturnsTransformationMethod.getInstance()
+                    else PasswordTransformationMethod.getInstance()
 
-                    if (isPasswordVisible) {
-                        passwordEditText.transformationMethod = HideReturnsTransformationMethod.getInstance()
-                        passwordEditText.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.login_eye_on, 0)
-                    } else {
-                        passwordEditText.transformationMethod = PasswordTransformationMethod.getInstance()
-                        passwordEditText.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.login_eye_off, 0)
-                    }
-
-                    // 커서 위치 유지
-                    passwordEditText.setSelection(passwordEditText.text.length)
-                    return@setOnTouchListener true
-                }
+                val icon = if (isPasswordVisible) R.drawable.login_eye_on else R.drawable.login_eye_off
+                passwordEditText.setCompoundDrawablesWithIntrinsicBounds(0, 0, icon, 0)
+                passwordEditText.setSelection(passwordEditText.text.length)
+                return@setOnTouchListener true
             }
             false
         }
-
 
         loginButton.setOnClickListener {
             val username = usernameEditText.text.toString()
             val password = passwordEditText.text.toString()
 
             if (username.isNotEmpty() && password.isNotEmpty()) {
-                handleLogin(username, password)
+                checkPermissionsAndLogin(username, password)
             } else {
                 Toast.makeText(this, "아이디와 비밀번호를 확인해주세요!", Toast.LENGTH_SHORT).show()
             }
         }
 
-        val signUpBtn: Button = findViewById(R.id.login_btn_sign_up)
-        signUpBtn.setOnClickListener {
+        findViewById<Button>(R.id.login_btn_sign_up).setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
-            val options = ActivityOptions.makeCustomAnimation(
-                this,
-                R.anim.fade_in,   // 화면 진입 애니메이션
-                R.anim.fade_out  // 화면 퇴장 애니메이션
-            )
+            val options = ActivityOptions.makeCustomAnimation(this, R.anim.fade_in, R.anim.fade_out)
+            startActivity(intent, options.toBundle())
+        }
 
+        findViewById<TextView>(R.id.login_btn_find_id_password).setOnClickListener {
+            val intent = Intent(this, FindIDPasswordActivity::class.java)
+            val options = ActivityOptions.makeCustomAnimation(this, R.anim.fade_in, R.anim.fade_out)
             startActivity(intent, options.toBundle())
         }
     }
 
+    private fun checkPermissionsAndLogin(username: String, password: String) {
+        val permissions = arrayOf(
+            Manifest.permission.READ_PHONE_NUMBERS,
+            Manifest.permission.READ_SMS,
+            Manifest.permission.READ_PHONE_STATE
+        )
+
+        val missingPermissions = permissions.filter {
+            ContextCompat.checkSelfPermission(this, it) != PackageManager.PERMISSION_GRANTED
+        }
+
+        if (missingPermissions.isNotEmpty()) {
+            ActivityCompat.requestPermissions(this, missingPermissions.toTypedArray(), PERMISSION_REQUEST_CODE)
+        } else {
+            handleLogin(username, password)
+        }
+    }
+
+    @SuppressLint("MissingPermission")
     private fun handleLogin(username: String, password: String) {
+        val deviceId = Settings.Secure.getString(contentResolver, Settings.Secure.ANDROID_ID)
+        val telephonyManager = getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
+        val phoneNumber = telephonyManager.line1Number ?: "" // 일부 기기에서는 null일 수 있음
+
         CoroutineScope(Dispatchers.Main).launch {
             try {
-                val response = userRepository.login(username, password)
+                val response = userRepository.login(username, password, deviceId, phoneNumber)
                 if (response.isSuccessful) {
-                    val result = response.body()
-                    result?.let {
+                    response.body()?.let {
                         Toast.makeText(applicationContext, "로그인 성공", Toast.LENGTH_SHORT).show()
-                        saveUserInfo(result)
-                        val intent = Intent(this@LoginActivity, MainActivity::class.java)
-                        startActivity(intent)
+                        saveUserInfo(it)
+                        Log.d("BODA_login", "deviceID:$deviceId/phoneNumber:$phoneNumber")
+                        startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                         finish()
                     }
                 } else {
-                    val intent = Intent(this@LoginActivity, MainActivity::class.java)
-                    startActivity(intent)
                     Toast.makeText(applicationContext, "로그인 실패: ${response.message()}", Toast.LENGTH_SHORT).show()
+                    Log.d("BODA_login", "deviceID:$deviceId/phoneNumber:$phoneNumber")
+                    startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                 }
             } catch (e: Exception) {
                 Toast.makeText(applicationContext, "네트워크 오류가 발생했습니다.", Toast.LENGTH_SHORT).show()
@@ -112,14 +135,27 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun saveUserInfo(userInfo: UserInfo) {
-        val sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE)
-        val editor = sharedPreferences.edit()
-        editor.putString("userId", userInfo.userId)
-        editor.putString("username", userInfo.username)
-        editor.putString("token", userInfo.token)
-        editor.apply()
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == PERMISSION_REQUEST_CODE) {
+            if (grantResults.all { it == PackageManager.PERMISSION_GRANTED }) {
+                val username = usernameEditText.text.toString()
+                val password = passwordEditText.text.toString()
+                handleLogin(username, password)
+            } else {
+                Toast.makeText(this, "필수 권한이 거부되었습니다.", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
-
+    private fun saveUserInfo(userInfo: UserInfo) {
+        val prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE)
+        with(prefs.edit()) {
+            putString("userId", userInfo.userId)
+            putString("username", userInfo.username)
+            putString("token", userInfo.token)
+            Log.d("BODA_login_saveUserInfo", userInfo.userId +"/"+ userInfo.username +"/"+ userInfo.token)
+            apply()
+        }
+    }
 }

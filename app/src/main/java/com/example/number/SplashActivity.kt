@@ -25,6 +25,6 @@ class SplashActivity : AppCompatActivity() {
 
             startActivity(intent)
             finish()  // SplashActivity 종료
-        }, 3000) // 2초 후 LoginActivity로 이동
+        }, 1000) // 2초 후 LoginActivity로 이동
     }
 }

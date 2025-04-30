@@ -10,6 +10,8 @@ import android.text.method.PasswordTransformationMethod
 import android.widget.EditText
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 
 class SignUpActivity : AppCompatActivity() {
     private lateinit var passwordEditText: EditText
@@ -52,7 +54,7 @@ class SignUpActivity : AppCompatActivity() {
         }
 
 
-
+    /*
         // EditText에 TextWatcher 추가
         passwordEditText.setOnFocusChangeListener { _, hasFocus ->
             if (!hasFocus) {
@@ -65,27 +67,56 @@ class SignUpActivity : AppCompatActivity() {
                 validatePasswords()
             }
         }
+ */
+        val passwordEditText = findViewById<TextInputEditText>(R.id.sign_up_edit_password)
+        val confirmPasswordEditText = findViewById<TextInputEditText>(R.id.sign_up_edit_password_confirm)
 
+        passwordEditText.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                validatePasswords()
+            }
 
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
+
+        confirmPasswordEditText.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                validatePasswords()
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
 
 
 
     }
+
+
     private fun validatePasswords() {
         val password = passwordEditText.text.toString()
         val confirmPassword = confirmPasswordEditText.text.toString()
+        val confirmPasswordInputLayout = findViewById<TextInputLayout>(R.id.sign_up_input_layout_password_confirm)
 
         if (password.isNotEmpty() && confirmPassword.isNotEmpty()) {
             if (password == confirmPassword) {
                 passwordConfirmTextView.text = "비밀번호가 일치합니다."
                 passwordConfirmTextView.setTextColor(ContextCompat.getColor(this, R.color.blue))
+                confirmPasswordInputLayout.boxStrokeColor = ContextCompat.getColor(this, R.color.blue)
             } else {
                 passwordConfirmTextView.text = "비밀번호가 일치하지 않습니다."
                 passwordConfirmTextView.setTextColor(ContextCompat.getColor(this, R.color.red))
+                confirmPasswordInputLayout.boxStrokeColor = ContextCompat.getColor(this, R.color.red)
             }
         } else {
             passwordConfirmTextView.text = ""
         }
+
+
+
+
     }
+
 
 }

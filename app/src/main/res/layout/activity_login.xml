@@ -82,6 +82,7 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/login_btn_find_id_password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/login_tv_find_id_pw"
