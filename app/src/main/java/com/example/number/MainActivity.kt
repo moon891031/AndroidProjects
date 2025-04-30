@@ -28,10 +28,8 @@ import android.view.MotionEvent
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.app.role.RoleManager
-
-
-
-
+import androidx.navigation.ui.NavigationUI
+import com.google.android.material.appbar.MaterialToolbar
 
 
 class MainActivity : AppCompatActivity() {
@@ -67,14 +65,16 @@ class MainActivity : AppCompatActivity() {
 
 
 
+
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         requestAllPermissions()
         setContentView(binding.root)
-
+/*
         var dX = 0f
         var dY = 0f
         var downRawX = 0f
@@ -125,7 +125,9 @@ class MainActivity : AppCompatActivity() {
 
                 else -> false
             }
+
         }
+*/
 
         // 오버레이 권한 요청을 위한 ActivityResultLauncher 초기화
         overlayPermissionLauncher = registerForActivityResult(
@@ -182,6 +184,29 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
           */
         navView.setupWithNavController(navController)
+
+        navView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.navigation_call_log, R.id.navigation_contacts, R.id.navigation_settings,R.id.navigation_activity_log-> {
+                    // 일반 메뉴는 NavigationController로 처리
+                    NavigationUI.onNavDestinationSelected(item, navController)
+                    true
+                }
+                R.id.navigation_sync_btn -> {
+                    if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS)
+                        != PackageManager.PERMISSION_GRANTED
+                    ) {
+                        Log.d("[moon]MainActivity_OnCLick", "연락처 권한이 없으므로 권한요청.")
+                        ActivityCompat.requestPermissions(
+                            this, arrayOf(Manifest.permission.READ_CONTACTS), REQUEST_CONTACTS_PERMISSION
+                        )
+                    } else
+                        getContacts()
+                    false // false로 해야 선택 상태 유지 안됨
+                }
+                else -> false
+            }
+        }
     }
 
     private fun requestAllPermissions() {
@@ -212,7 +237,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
 
     // 연락처 정보를 가져오는 함수
     private fun getContacts() {

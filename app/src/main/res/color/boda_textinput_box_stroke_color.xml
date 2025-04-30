@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 포커스 되었을 때 테두리와 레이블 색 -->
+    <item android:color="#BDBDBD" android:state_focused="true" />
+    <item android:color="#BDBDBD" android:state_activated="true" />
+    <!-- 포커스 안됐을 때 기본 테두리와 레이블 색 -->
+    <item android:color="#E0E0E0
+" />
+</selector>

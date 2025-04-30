@@ -2,12 +2,28 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFF9D0">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#FFFFFF">
 
-    <ImageView
-        android:id="@+id/splashLogo"
-        android:layout_width="121dp"
-        android:layout_height="312dp"
-        android:src="@drawable/voda_logo"
-        android:layout_centerInParent="true" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+
+        >
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="200dp"
+        android:paddingEnd="20dp"
+        app:lottie_fileName="loading2.json"
+        app:lottie_autoPlay="true"
+
+        app:lottie_loop="true" />
+
+    </LinearLayout>
+
+
 </RelativeLayout>

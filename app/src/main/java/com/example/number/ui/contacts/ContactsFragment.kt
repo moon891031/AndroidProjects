@@ -47,6 +47,7 @@ class ContactsFragment : Fragment() {
             fetchContacts(query)
         }
 
+
         return binding.root
     }
 

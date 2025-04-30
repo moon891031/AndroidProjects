@@ -2,8 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
     <!-- 스크롤 뷰 추가 -->
     <ScrollView
         android:layout_width="0dp"
@@ -23,33 +23,31 @@
             android:orientation="vertical"
             android:gravity="center"
             android:padding="20dp">
+            
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginBottom="50dp"
+                android:contentDescription="TODO"
+                android:src="@drawable/ic_boda_logo"
+                />
 
-            <!-- ID 입력 -->
+            <!-- ID 입력 플로팅레이블-->
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:hint="@string/login_hint_id"
                 style="@style/MyTextInputLayoutStyle"
                 >
                 <com.google.android.material.textfield.TextInputEditText
-                    style="@style/MyTextInputLayoutStyle"
                     android:id="@+id/login_edit_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black"
-                    android:textSize="12sp"
+                    android:inputType="text"
+                    android:maxLength="10"
                     android:minHeight="48dp"
                     android:singleLine="true"
-                    android:maxLength="10"
-                    android:inputType="text"
-
                     />
             </com.google.android.material.textfield.TextInputLayout>
-            <!-- 비밀번호 입력 -->
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:hint="@string/login_hint_password"
                 style="@style/MyTextInputLayoutStyle"
                 >
@@ -57,18 +55,14 @@
                     android:id="@+id/login_edit_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black"
                     android:textSize="12sp"
                     android:minHeight="48dp"
                     android:singleLine="true"
                     android:drawableEnd="@drawable/login_eye_off"
                     android:maxLength="10"
                     android:inputType="textPassword"
-
                     />
             </com.google.android.material.textfield.TextInputLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -77,37 +71,60 @@
                 <CheckBox
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    />
+                    android:buttonTint="@color/black"
+                    android:layout_gravity="center" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/login_tv_auto_login"
                     android:layout_gravity="center"
-                    android:textSize="13sp"
-                    />
-
+                    android:textColor="@color/boda_text_secondary" />
             </LinearLayout>
-            <!-- 로그인 버튼 -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/login_tv_find_id_pw"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/white"
+                android:layout_marginVertical="15dp"
+                />
+
             <Button
+                style="@style/Btn"
                 android:id="@+id/login_btn_login"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/black"
-                android:text="@string/login_btn_login"
-                app:cornerRadius="20dp" />
-
+                android:text="@string/login_btn_login" />
+            <!-- 회원가입 버튼 -->
             <Button
+                style="@style/Btn"
                 android:id="@+id/login_btn_sign_up"
+                android:text="@string/login_btn_sign_up" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/login_btn_google"
+                style="@style/Btn"
+                android:layout_marginTop="30dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/black"
-                android:text="@string/login_btn_sign_up"
-                app:cornerRadius="20dp" />
-
-
-
-
+                android:backgroundTint="#F2F2F2"
+                android:textColor="@color/black"
+                android:text="@string/login_btn_google"
+                app:icon="@drawable/ic_btn_google"
+                app:iconGravity="textStart"
+                app:iconPadding="8dp"
+                app:iconTint="@null" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/login_btn_naver"
+                style="@style/Btn"
+                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#03C75A"
+                android:textColor="@color/white"
+                android:text="@string/login_btn_naver"
+                app:icon="@drawable/ic_btn_naver"
+                app:iconGravity="textStart"
+                app:iconPadding="8dp"
+                app:iconTint="@null" />
 
         </LinearLayout>
     </ScrollView>

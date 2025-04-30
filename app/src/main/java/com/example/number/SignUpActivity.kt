@@ -9,17 +9,22 @@ import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.widget.EditText
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 
 class SignUpActivity : AppCompatActivity() {
+    private lateinit var passwordEditText: EditText
+    private lateinit var confirmPasswordEditText: EditText
+    private lateinit var passwordConfirmTextView: TextView
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
         setContentView(R.layout.activity_sign_up)
-        val passwordEditText = findViewById<EditText>(R.id.sign_up_edit_password)
-        val confirmPasswordEditText = findViewById<EditText>(R.id.sign_up_edit_password_confirm)
-        val passwordConfirmTextView = findViewById<TextView>(R.id.sign_up_tv_password_confirm)
+        passwordEditText = findViewById(R.id.sign_up_edit_password)
+        confirmPasswordEditText = findViewById(R.id.sign_up_edit_password_confirm)
+        passwordConfirmTextView = findViewById(R.id.sign_up_tv_password_confirm)
+
         var isPasswordVisible = false // 초기 상태: 비밀번호 숨김
 
 
@@ -32,10 +37,10 @@ class SignUpActivity : AppCompatActivity() {
 
                     if (isPasswordVisible) {
                         confirmPasswordEditText.transformationMethod = HideReturnsTransformationMethod.getInstance()
-                        confirmPasswordEditText.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.login_eye_on, 0)
+                        confirmPasswordEditText.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_eye_on, 0)
                     } else {
                         confirmPasswordEditText.transformationMethod = PasswordTransformationMethod.getInstance()
-                        confirmPasswordEditText.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.login_eye_off, 0)
+                        confirmPasswordEditText.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_eye_off, 0)
                     }
 
                     // 커서 위치 유지
@@ -49,34 +54,38 @@ class SignUpActivity : AppCompatActivity() {
 
 
         // EditText에 TextWatcher 추가
-        val textWatcher = object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                val password = passwordEditText.text.toString()
-                val confirmPassword = confirmPasswordEditText.text.toString()
-
-                if (password.isNotEmpty() && confirmPassword.isNotEmpty()) {
-                    if (password == confirmPassword) {
-                        passwordConfirmTextView.text = "비밀번호가 일치합니다."
-                        passwordConfirmTextView.setTextColor(getColor(R.color.teal_200)) // 성공 색상
-                    } else {
-                        passwordConfirmTextView.text = "비밀번호가 일치하지 않습니다."
-                        passwordConfirmTextView.setTextColor(getColor(R.color.purple_500)) // 실패 색상
-                    }
-                } else {
-                    passwordConfirmTextView.text = "" // 초기 상태
-                }
+        passwordEditText.setOnFocusChangeListener { _, hasFocus ->
+            if (!hasFocus) {
+                validatePasswords()
             }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         }
 
-        passwordEditText.addTextChangedListener(textWatcher)
-        confirmPasswordEditText.addTextChangedListener(textWatcher)
+        confirmPasswordEditText.setOnFocusChangeListener { _, hasFocus ->
+            if (!hasFocus) {
+                validatePasswords()
+            }
+        }
+
 
 
 
 
     }
+    private fun validatePasswords() {
+        val password = passwordEditText.text.toString()
+        val confirmPassword = confirmPasswordEditText.text.toString()
+
+        if (password.isNotEmpty() && confirmPassword.isNotEmpty()) {
+            if (password == confirmPassword) {
+                passwordConfirmTextView.text = "비밀번호가 일치합니다."
+                passwordConfirmTextView.setTextColor(ContextCompat.getColor(this, R.color.blue))
+            } else {
+                passwordConfirmTextView.text = "비밀번호가 일치하지 않습니다."
+                passwordConfirmTextView.setTextColor(ContextCompat.getColor(this, R.color.red))
+            }
+        } else {
+            passwordConfirmTextView.text = ""
+        }
+    }
+
 }

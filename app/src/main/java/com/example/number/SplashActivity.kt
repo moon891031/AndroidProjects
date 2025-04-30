@@ -16,6 +16,7 @@ class SplashActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         // Splash 화면에 표시할 레이아웃 설정
+        supportActionBar?.hide()
         setContentView(R.layout.activity_splash)
 
         // 일정 시간 후 LoginActivity로 이동
@@ -24,6 +25,6 @@ class SplashActivity : AppCompatActivity() {
 
             startActivity(intent)
             finish()  // SplashActivity 종료
-        }, 2000) // 2초 후 LoginActivity로 이동
+        }, 3000) // 2초 후 LoginActivity로 이동
     }
 }

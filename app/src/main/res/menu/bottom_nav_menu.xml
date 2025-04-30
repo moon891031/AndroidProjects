@@ -1,18 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/navigation_call_log"
-        android:icon="@drawable/nav_ic_call_log"
-        android:title="@string/nav_callLog" />
-    <item
         android:id="@+id/navigation_contacts"
-        android:icon="@drawable/nav_ic_contacts"
+        android:icon="@drawable/ic_contacts2"
+        android:iconTint="@color/black"
         android:title="@string/nav_contacts" />
+    <item
+        android:id="@+id/navigation_call_log"
+        android:icon="@drawable/ic_call_log2"
+        android:title="@string/nav_callLog" />
+
+    <item
+        android:id="@+id/navigation_sync_btn"
+        android:icon="@drawable/main_sync_icon"
+        android:iconTint="@color/black"
+        android:title="@string/nav_sync_btn"/>
+
+
+    <item
+        android:id="@+id/navigation_activity_log"
+        android:icon="@drawable/ic_activity_log2"
+        android:iconTint="@color/black"
+        android:title="@string/nav_activity_log" />
+
 
 
     <item
         android:id="@+id/navigation_settings"
-        android:icon="@drawable/nav_ic_settings"
+        android:icon="@drawable/ic_settings2"
+        android:iconTint="@color/black"
         android:title="@string/nav_settings" />
 
 </menu>

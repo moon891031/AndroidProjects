@@ -37,7 +37,7 @@ class ForegroundService : Service() {
             val notification = NotificationCompat.Builder(this, channelId)
                 .setContentTitle("전화 서비스")
                 .setContentText("앱이 포그라운드 상태입니다.")
-                .setSmallIcon(R.drawable.ic_notification) // 아이콘 설정
+                .setSmallIcon(R.drawable.ic_boda_logo) // 아이콘 설정
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .build()
 

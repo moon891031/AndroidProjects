@@ -1,0 +1,7 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- EditText글씨색상 조정-->
+    <item android:color="@color/black" android:state_focused="true" />
+    <item android:color="@color/black" android:state_activated="true" />
+    <item android:color="#999999" /> <!-- 포커스 없는 기본상태 -->
+</selector>

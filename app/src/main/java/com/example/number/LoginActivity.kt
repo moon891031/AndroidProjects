@@ -17,7 +17,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import com.example.number.repository.UserRepository
 import com.example.number.model.UserInfo
-import com.example.number.utils.CustomSnackbar
 
 class LoginActivity : AppCompatActivity() {
 
@@ -71,7 +70,7 @@ class LoginActivity : AppCompatActivity() {
             if (username.isNotEmpty() && password.isNotEmpty()) {
                 handleLogin(username, password)
             } else {
-                CustomSnackbar.show(this, "아이디와 비밀번호를 확인해주세요!", R.drawable.voda_logo)
+                Toast.makeText(this, "아이디와 비밀번호를 확인해주세요!", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -121,4 +120,6 @@ class LoginActivity : AppCompatActivity() {
         editor.putString("token", userInfo.token)
         editor.apply()
     }
+
+
 }

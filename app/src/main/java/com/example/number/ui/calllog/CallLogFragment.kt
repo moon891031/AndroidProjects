@@ -28,9 +28,9 @@ class CallLogFragment : Fragment() {
         _binding = FragmentCallLogBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textCallLog
+
         CallLogViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+
         }
         return root
     }

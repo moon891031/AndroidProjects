@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_call_log">
+    app:startDestination="@+id/navigation_contacts">
 
       <fragment
         android:id="@+id/navigation_contacts"
@@ -14,6 +14,11 @@
         android:id="@+id/navigation_call_log"
         android:name="com.example.number.ui.calllog.CallLogFragment"
         tools:layout="@layout/fragment_call_log" />
+    <fragment
+        android:id="@+id/navigation_activity_log"
+        android:name="com.example.number.ui.calllog.CallLogFragment"
+        tools:layout="@layout/fragment_call_log" />
+
     <fragment
         android:id="@+id/navigation_settings"
         android:name="com.example.number.ui.settings.SettingFragment"

@@ -35,23 +35,22 @@
                 android:hint="@string/signup_tv_phone"
                 >
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/sign_up_edit_phone"
                     style="@style/SignUpEditText"
+                    android:id="@+id/sign_up_edit_phone"
                     android:inputType="number"
                     android:maxLength="11" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
+                style="@style/Btn"
                 android:id="@+id/sign_up_btn_phone_confirm"
                 android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:layout_gravity="center"
+                android:layout_height="45dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginEnd="5dp"
                 android:text="@string/signup_btn_phone_confirm"
-                android:backgroundTint="@color/black"
                 android:layout_alignParentEnd="true"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="10dp"
-                app:cornerRadius="10dp"
+                android:layout_centerVertical="true"
                 android:singleLine="true"
 
                 />
@@ -59,7 +58,6 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="12sp"
                 />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -73,43 +71,50 @@
                     android:id="@+id/sign_up_edit_name"
                     android:maxLength="10"
                     android:inputType="text"
-                 />
+                    />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="12sp"
                     />
             </com.google.android.material.textfield.TextInputLayout>
-
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content">
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/MyTextInputLayoutStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/signup_tv_id"
-
                     >
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/sign_up_edit_id"
                         style="@style/SignUpEditText"
-                        android:maxLength="16"
-                        android:inputType="text"
+                        android:id="@+id/sign_up_edit_id"
 
-                        />
+                        android:inputType="number"
+                        android:maxLength="11" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <Button
+                    style="@style/Btn"
+                    android:id="@+id/sign_up_btn_id_confirm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginEnd="5dp"
+                    android:text="@string/signup_btn_id_confirm"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:singleLine="true"
 
-            </LinearLayout>
+
+                    />
+            </RelativeLayout>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/signup_tv_id_hint"
                 android:gravity="end"
                 android:textColor="@color/black"
-                android:textSize="12sp"
              />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -132,7 +137,7 @@
                 android:text="@string/signup_tv_password_hint"
                 android:gravity="end"
                 android:textColor="@color/black"
-                android:textSize="12sp"
+
                />
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -144,7 +149,7 @@
                     style="@style/SignUpEditText"
                     android:maxLength="16"
                     android:inputType="textPassword"
-                    android:drawableEnd="@drawable/login_eye_off"
+                    android:drawableEnd="@drawable/ic_eye_off"
                     />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -154,7 +159,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="end"
                 android:textColor="@color/black"
-                android:textSize="12sp"/>
+              />
 
 
             <com.google.android.material.textfield.TextInputLayout
@@ -173,79 +178,34 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="12sp"
+
                     />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/signup_tv_gender"
-                android:textColor="@color/black"
-                android:textSize="12sp"/>
-
-            <RadioGroup
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/signUpGenderBoy"
-                    android:layout_width="wrap_content"
-                    android:layout_height="48dp"
-                    android:text="@string/signup_tv_gender_boy" />
-
-                <RadioButton
-                    android:id="@+id/signUpGenderGirl"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:text="@string/signup_tv_gender_girl" />
-            </RadioGroup>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/signup_tv_marketing"
-                android:textColor="@color/black"
-                android:textSize="12sp"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:hint="@string/signup_tv_gender"
+                style="@style/MyTextInputLayoutStyle"
                 >
-                <CheckBox
-                    android:id="@+id/check1"
-                    android:layout_width="30dp"
-                    android:layout_height="48dp"
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/sign_up_edit_gender"
+                    style="@style/SignUpEditText"
+                    android:inputType="text"
+                    android:maxLength="4"
                     />
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:text="@string/signup_tv_marketing_sms"
 
-                   />
-
-                <CheckBox
-                    android:id="@+id/check2"
-                    android:layout_width="30dp"
-                    android:layout_height="48dp"
-                    android:layout_marginStart="20dp"
-                   />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/signup_tv_marketing_app_push"
-                    android:textColor="@color/black"
                     />
-            </LinearLayout>
+            </com.google.android.material.textfield.TextInputLayout>
+
             <Button
+                style="@style/Btn"
                 android:id="@+id/sign_up_btn_sign_up"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cornerRadius="20dp"
-                android:backgroundTint="@color/black"
+                android:backgroundTint="#A8A8A8"
                 android:text="@string/signup_btn_sing_up"/>
         </LinearLayout>
     </ScrollView>
