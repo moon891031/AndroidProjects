@@ -40,7 +40,7 @@
                 android:gravity="center">
 
                 <ImageButton
-                    android:id="@+id/btnPhoneCall"
+                    android:id="@+id/contactDetailBtnPhoneCall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_contact_detail_phone_call"
@@ -48,7 +48,7 @@
                     android:layout_marginEnd="5dp" />
 
                 <ImageButton
-                    android:id="@+id/btnSendSms"
+                    android:id="@+id/contactDetailBtnSendSms"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_contact_detail_send_sms"
@@ -56,7 +56,7 @@
                     android:layout_marginEnd="5dp" />
 
                 <ImageButton
-                    android:id="@+id/btnQuotation"
+                    android:id="@+id/contactDetailBtnQuotation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_contact_detail_quotation"
@@ -64,7 +64,7 @@
                     android:layout_marginEnd="5dp" />
 
                 <ImageButton
-                    android:id="@+id/btnModify"
+                    android:id="@+id/contactDetailBtnModify"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_contact_detail_modify"
@@ -83,7 +83,7 @@
                 android:text="@string/contact_detail_tv_phone" />
 
             <LinearLayout
-                android:id="@+id/phoneListContainer"
+                android:id="@+id/contactDetailListContainerPhoneNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical" />
@@ -100,7 +100,7 @@
                 android:text="@string/contact_detail_tv_group" />
 
             <LinearLayout
-                android:id="@+id/groupListContainer"
+                android:id="@+id/contactDetailListContainerGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal" />
@@ -117,7 +117,7 @@
                 android:text="@string/contact_detail_tv_address" />
 
             <LinearLayout
-                android:id="@+id/addressListContainer"
+                android:id="@+id/contactDetailListContainerAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical" />
@@ -134,7 +134,7 @@
                 android:text="@string/contact_detail_tv_car_number" />
 
             <LinearLayout
-                android:id="@+id/carNumberListContainer"
+                android:id="@+id/contactDetailListContainerCarNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical" />
@@ -151,7 +151,7 @@
                 android:text="@string/contact_detail_tv_car_type" />
 
             <LinearLayout
-                android:id="@+id/carTypeListContainer"
+                android:id="@+id/contactDetailListContainerCarType"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical" />
@@ -179,7 +179,7 @@
                 app:boxCornerRadiusBottomEnd="8dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/memoEditText"
+                    android:id="@+id/contactDetailEtMemo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:minLines="5"
@@ -190,7 +190,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:id="@+id/btnMemoSave"
+                android:id="@+id/contactDetailBtnMemoSave"
                 android:layout_width="wrap_content"
                 android:layout_height="45dp"
                 android:text="저장"
@@ -208,7 +208,7 @@
                 android:text="@string/contact_detail_tv_call_log" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewPhone"
+                android:id="@+id/contactDetailRvCallLog"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp" />

@@ -1,13 +1,17 @@
 package com.example.number.ui.contacts
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.number.ModifyGroupActivity
+
 import com.example.number.databinding.FragmentContactsBinding
 import com.example.number.model.Contact
 import com.example.number.repository.ContactRepository
@@ -42,14 +46,54 @@ class ContactsFragment : Fragment() {
         fetchContacts()
 
         // 4. 검색 버튼 클릭 이벤트
+        /*
         binding.btnSearch.setOnClickListener {
             val query = binding.editSearch.text.toString()
             fetchContacts(query)
         }
+        */
 
+        binding.contactBtnModifyGroup.setOnClickListener {
+            val intent = Intent(requireContext(), ModifyGroupActivity::class.java)
+            startActivity(intent)
+
+        }
+
+
+        val callTypeOptions: List<String> = listOf("이름", "전화번호", "차량번호")
+
+        val adapter = ArrayAdapter(
+            requireContext(),  // 또는 activity / context!!
+            android.R.layout.simple_dropdown_item_1line,
+            callTypeOptions
+        )
+
+        binding.contactFilterItem.setAdapter(adapter)
+        binding.contactFilterItem.setOnItemClickListener { _, _, position, _ ->
+            val selected = callTypeOptions[position]
+           // Toast.makeText(requireContext(), selected, Toast.LENGTH_SHORT).show()
+            // 선택된 항목에 따라 RecyclerView 필터링 로직 실행
+        }
+        binding.contactBtnSearch.setOnClickListener {
+            val selectedFilter = binding.contactFilterItem.text.toString()
+            val searchText = binding.contactEtSearch.text.toString()
+
+            Toast.makeText(
+                requireContext(),
+                "필터: $selectedFilter\n검색어: $searchText",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+        val filterItems = mutableListOf("전체", "수신", "발신", "부재중", "기타", "+")
+        val adapterGroup = ContactAdapterGroup(filterItems) { selectedIndex ->
+            Log.d("선택됨", "선택한 항목: ${filterItems[selectedIndex]}")
+        }
+        binding.contactRvGroup.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        binding.contactRvGroup.adapter = adapterGroup
 
         return binding.root
     }
+
 
     private fun fetchContacts(query: String? = null) {
         CoroutineScope(Dispatchers.Main).launch {

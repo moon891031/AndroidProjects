@@ -85,7 +85,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         findViewById<TextView>(R.id.loginBtnFindIdPassword).setOnClickListener {
-            val intent = Intent(this, FindIDPasswordActivity::class.java)
+            val intent = Intent(this, FindIdPasswordActivity::class.java)
             val options = ActivityOptions.makeCustomAnimation(this, R.anim.fade_in, R.anim.fade_out)
             startActivity(intent, options.toBundle())
         }

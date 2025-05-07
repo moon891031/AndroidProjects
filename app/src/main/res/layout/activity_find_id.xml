@@ -26,7 +26,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/find_id_password_tv_title"
+                android:text="@string/find_id_password_tv_find_id"
                 android:textSize="@dimen/text_size_title"
                 android:layout_marginBottom="100dp"
                 android:textColor="@color/black"
@@ -34,53 +34,30 @@
 
 
             <TextView
+                android:id="@+id/login_btn_find_id_password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/find_id_password_tv_find_id"
-                android:textSize="@dimen/text_size_subtitle"
-                android:layout_marginBottom="30dp"
                 android:layout_marginTop="30dp"
+                android:text="가입된 아이디"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_subtitle"
 
                 />
-
-            <Button
-                style="@style/Btn"
-                android:id="@+id/findIdPasswordBtnFindId"
-                android:text="@string/find_id_password_btn_verify_id"
-                android:layout_marginBottom="20dp"/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginVertical="24dp"
-                android:background="@color/black"
-           />
 
             <TextView
+                android:id="@+id/find_id_tv_found_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/find_id_password_tv_change_password"
-                android:textSize="@dimen/text_size_subtitle"
-                android:layout_marginBottom="30dp"
-                android:layout_marginTop="30dp"
+                android:hint="아이디123"
+                android:layout_marginVertical="20dp"
                 />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/find_id_password_et_id_hint"
-                style="@style/MyTextInputLayoutStyle"
-                >
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/find_id_password_et_change_password_id"
-                    style="@style/SignUpEditText"
-                    android:maxLength="16"
-                    android:inputType="text"
-                    />
-            </com.google.android.material.textfield.TextInputLayout>
             <Button
                 style="@style/Btn"
-                android:id="@+id/findIdPasswordBtnFindPassword"
-                android:text="@string/find_id_password_btn_verify_password" />
+                android:id="@+id/find_id_change_password"
+                android:text="비밀번호 변경하기"
+                android:layout_marginBottom="20dp"/>
+
 
 
         </LinearLayout>

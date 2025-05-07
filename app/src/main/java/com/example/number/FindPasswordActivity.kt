@@ -1,19 +1,20 @@
 package com.example.number
 
+
 import android.annotation.SuppressLint
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.widget.EditText
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 
-class SignUpActivity : AppCompatActivity() {
+
+class FindPasswordActivity : AppCompatActivity() {
     private lateinit var passwordEditText: EditText
     private lateinit var confirmPasswordEditText: EditText
     private lateinit var passwordConfirmTextView: TextView
@@ -22,13 +23,12 @@ class SignUpActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
-        setContentView(R.layout.activity_sign_up)
-        passwordEditText = findViewById(R.id.signUpEditPassword)
-        confirmPasswordEditText = findViewById(R.id.signUpEditPasswordConfirm)
-        passwordConfirmTextView = findViewById(R.id.signUpTvPasswordConfirm)
+        setContentView(R.layout.activity_find_password)
+        passwordEditText = findViewById(R.id.findPasswordEtChangePassword)
+        confirmPasswordEditText = findViewById(R.id.findPasswordEtChangePasswordConfirm)
+        passwordConfirmTextView = findViewById(R.id.findPasswordTvPasswordConfirm)
 
         var isPasswordVisible = false // 초기 상태: 비밀번호 숨김
-
 
         confirmPasswordEditText.setOnTouchListener { _, event ->
             val DRAWABLE_END = 2 // 우측 아이콘의 인덱스
@@ -53,21 +53,6 @@ class SignUpActivity : AppCompatActivity() {
             false
         }
 
-
-    /*
-        // EditText에 TextWatcher 추가
-        passwordEditText.setOnFocusChangeListener { _, hasFocus ->
-            if (!hasFocus) {
-                validatePasswords()
-            }
-        }
-
-        confirmPasswordEditText.setOnFocusChangeListener { _, hasFocus ->
-            if (!hasFocus) {
-                validatePasswords()
-            }
-        }
- */
         passwordEditText.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 validatePasswords()
@@ -91,7 +76,7 @@ class SignUpActivity : AppCompatActivity() {
     private fun validatePasswords() {
         val password = passwordEditText.text.toString()
         val confirmPassword = confirmPasswordEditText.text.toString()
-        val confirmPasswordInputLayout = findViewById<TextInputLayout>(R.id.signUpInputLayoutPasswordConfirm)
+        val confirmPasswordInputLayout = findViewById<TextInputLayout>(R.id.findPasswordInputLayoutPasswordConfirm)
 
         if (password.isNotEmpty() && confirmPassword.isNotEmpty()) {
             if (password == confirmPassword) {
@@ -106,6 +91,7 @@ class SignUpActivity : AppCompatActivity() {
         } else {
             passwordConfirmTextView.text = ""
         }
+
 
 
 

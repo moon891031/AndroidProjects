@@ -6,13 +6,13 @@ import androidx.appcompat.app.AppCompatActivity
 
 
 
-class FindIDPasswordActivity : AppCompatActivity() {
+class FindIdActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
-        setContentView(R.layout.activity_find_id_password)
+        setContentView(R.layout.activity_find_id)
 
     }
 

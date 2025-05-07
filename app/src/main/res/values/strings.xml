@@ -48,6 +48,10 @@
     <string name="find_id_password_et_id_hint">아이디<font color="#FF0000">*</font></string>
     <string name="find_id_password_btn_verify_id">본인인증</string>
     <string name="find_id_password_btn_verify_password">본인인증</string>
+    <string name="find_password_tv_password">비밀번호<font color="#FF0000">*</font></string>
+    <string name="find_password_tv_password_confirm">비밀번호 확인<font color="#FF0000">*</font></string>
+    <string name="find_password_btn_change_password">비밀번호 변경하기</string>
+    <string name="find_password_tv_password_hint">8~16자,영어 대문자,숫자,특수문자 조합 추천</string>
     <string name="contact_detail_tv_name">이름</string>
     <string name="contact_detail_tv_phone">전화번호</string>
     <string name="contact_detail_tv_group">그룹</string>
@@ -57,6 +61,9 @@
     <string name="contact_detail_tv_memo">메모</string>
     <string name="contact_detail_tv_call_log">통화기록</string>
     <string name="contact_detail_tv_activity_log">활동일지</string>
-
+    <string name="modify_group_btn_save">저장</string>
+    <string name="modify_group_btn_cancel">취소</string>
+    <string name="modify_group_btn_add_group">그룹추가</string>
+    <string name="modify_group_tv_title">그룹 관리</string>
 
 </resources>
