@@ -67,6 +67,8 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".FindIDPasswordActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".ContactDetailActivity"
+            android:screenOrientation="portrait"/>
 
         <receiver
             android:name=".PhoneReceiver"

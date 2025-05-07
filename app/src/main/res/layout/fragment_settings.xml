@@ -70,43 +70,43 @@
 
     <com.google.android.material.button.MaterialButton
         style="@style/SettingsButtonStyle"
-        android:id="@+id/btn_user_info"
+        android:id="@+id/settings_btn_user_info"
         android:text="@string/settings_btn_user_info"
    />
 
     <com.google.android.material.button.MaterialButton
         style="@style/SettingsButtonStyle"
-        android:id="@+id/btn_verified_numbers"
+        android:id="@+id/settings_btn_verified_numbers"
         android:text="@string/settings_btn_verified_numbers"
          />
 
     <com.google.android.material.button.MaterialButton
         style="@style/SettingsButtonStyle"
-        android:id="@+id/btn_subscription_payment"
+        android:id="@+id/settings_btn_subscription_payment"
         android:text="@string/settings_btn_subscription_payment"
         />
 
     <com.google.android.material.button.MaterialButton
         style="@style/SettingsButtonStyle"
-        android:id="@+id/btn_notifications"
+        android:id="@+id/settings_btn_notifications"
         android:text="@string/settings_btn_notifications"
          />
 
     <com.google.android.material.button.MaterialButton
         style="@style/SettingsButtonStyle"
-        android:id="@+id/btn_terms_conditions"
+        android:id="@+id/settings_btn_terms_conditions"
         android:text="@string/settings_btn_terms_conditions"
        />
 
     <com.google.android.material.button.MaterialButton
         style="@style/SettingsButtonStyle"
-        android:id="@+id/btn_support"
+        android:id="@+id/settings_btn_support"
         android:text="@string/settings_btn_support"
        />
 
     <com.google.android.material.button.MaterialButton
         style="@style/SettingsButtonStyle"
-        android:id="@+id/btn_app_version"
+        android:id="@+id/settings_btn_app_version"
         android:text="@string/settings_btn_app_version"
        />
 

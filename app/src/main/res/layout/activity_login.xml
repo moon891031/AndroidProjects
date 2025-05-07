@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF">
-    <!-- 스크롤 뷰 추가 -->
+
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -16,43 +16,40 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- 로그인 폼 컨테이너 -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
             android:padding="20dp">
-            
+
             <ImageView
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_marginBottom="50dp"
                 android:contentDescription="TODO"
-                android:src="@drawable/ic_boda_logo"
-                />
+                android:src="@drawable/ic_boda_logo" />
 
-            <!-- ID 입력 플로팅레이블-->
             <com.google.android.material.textfield.TextInputLayout
                 android:hint="@string/login_hint_id"
-                style="@style/MyTextInputLayoutStyle"
-                >
+                style="@style/MyTextInputLayoutStyle">
+
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/login_edit_id"
+                    android:id="@+id/loginEditId"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
                     android:maxLength="10"
                     android:minHeight="48dp"
-                    android:singleLine="true"
-                    />
+                    android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
+
             <com.google.android.material.textfield.TextInputLayout
                 android:hint="@string/login_hint_password"
-                style="@style/MyTextInputLayoutStyle"
-                >
+                style="@style/MyTextInputLayoutStyle">
+
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/login_edit_password"
+                    android:id="@+id/loginEditPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
@@ -60,49 +57,30 @@
                     android:singleLine="true"
                     android:drawableEnd="@drawable/login_eye_off"
                     android:maxLength="10"
-                    android:inputType="textPassword"
-                    />
+                    android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="start">
-                <CheckBox
-                    android:layout_width="30dp"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="@color/black"
-                    android:layout_gravity="center" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/login_tv_auto_login"
-                    android:layout_gravity="center"
-                    android:textColor="@color/boda_text_secondary" />
-            </LinearLayout>
 
             <TextView
-                android:id="@+id/login_btn_find_id_password"
+                android:id="@+id/loginBtnFindIdPassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/login_tv_find_id_pw"
                 android:textColor="@color/black"
                 android:backgroundTint="@color/white"
-                android:layout_marginVertical="15dp"
-                />
+                android:layout_marginVertical="15dp" />
 
             <Button
                 style="@style/Btn"
-                android:id="@+id/login_btn_login"
+                android:id="@+id/loginBtnLogin"
                 android:text="@string/login_btn_login" />
-            <!-- 회원가입 버튼 -->
+
             <Button
                 style="@style/Btn"
-                android:id="@+id/login_btn_sign_up"
+                android:id="@+id/loginBtnSignUp"
                 android:text="@string/login_btn_sign_up" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/login_btn_google"
+                android:id="@+id/loginBtnGoogle"
                 style="@style/Btn"
                 android:layout_marginTop="30dp"
                 android:layout_width="match_parent"
@@ -114,10 +92,11 @@
                 app:iconGravity="textStart"
                 app:iconPadding="8dp"
                 app:iconTint="@null" />
+
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/login_btn_naver"
+                android:id="@+id/loginBtnNaver"
                 style="@style/Btn"
-                 android:layout_width="match_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#03C75A"
                 android:textColor="@color/white"
@@ -126,8 +105,6 @@
                 app:iconGravity="textStart"
                 app:iconPadding="8dp"
                 app:iconTint="@null" />
-
         </LinearLayout>
     </ScrollView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

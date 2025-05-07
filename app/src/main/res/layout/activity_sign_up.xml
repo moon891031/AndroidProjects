@@ -5,18 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- 스크롤 가능하게 ScrollView 추가 -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
-        <!-- 로그인 폼 컨테이너 -->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
             android:padding="20dp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -28,75 +28,73 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/MyTextInputLayoutStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/signup_tv_phone"
-                >
-                <com.google.android.material.textfield.TextInputEditText
-                    style="@style/SignUpEditText"
-                    android:id="@+id/sign_up_edit_phone"
-                    android:inputType="number"
-                    android:maxLength="11" />
-            </com.google.android.material.textfield.TextInputLayout>
 
-            <Button
-                style="@style/Btn"
-                android:id="@+id/sign_up_btn_phone_confirm"
-                android:layout_width="wrap_content"
-                android:layout_height="45dp"
-                android:layout_marginTop="14dp"
-                android:layout_marginEnd="5dp"
-                android:text="@string/signup_btn_phone_confirm"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:singleLine="true"
-
-                />
-            </RelativeLayout>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/MyTextInputLayoutStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/signup_tv_name"
-                >
-                <com.google.android.material.textfield.TextInputEditText
-                    style="@style/SignUpEditText"
-                    android:id="@+id/sign_up_edit_name"
-                    android:maxLength="10"
-                    android:inputType="text"
-                    />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    />
-            </com.google.android.material.textfield.TextInputLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/MyTextInputLayoutStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/signup_tv_id"
-                    >
+                    android:hint="@string/signup_tv_phone">
+
                     <com.google.android.material.textfield.TextInputEditText
                         style="@style/SignUpEditText"
-                        android:id="@+id/sign_up_edit_id"
-
+                        android:id="@+id/signUpEditPhone"
                         android:inputType="number"
                         android:maxLength="11" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
                     style="@style/Btn"
-                    android:id="@+id/sign_up_btn_id_confirm"
+                    android:id="@+id/signUpBtnPhoneConfirm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginEnd="5dp"
+                    android:text="@string/signup_btn_phone_confirm"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:singleLine="true"/>
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/MyTextInputLayoutStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/signup_tv_name">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/SignUpEditText"
+                    android:id="@+id/signUpEditName"
+                    android:maxLength="10"
+                    android:inputType="text" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/MyTextInputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/signup_tv_id">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/SignUpEditText"
+                        android:id="@+id/signUpEditId"
+                        android:inputType="text"
+                        android:maxLength="11" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    style="@style/Btn"
+                    android:id="@+id/signUpBtnIdConfirm"
                     android:layout_width="wrap_content"
                     android:layout_height="45dp"
                     android:layout_marginTop="14dp"
@@ -104,31 +102,27 @@
                     android:text="@string/signup_btn_id_confirm"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:singleLine="true"
-
-
-                    />
+                    android:singleLine="true" />
             </RelativeLayout>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/signup_tv_id_hint"
                 android:gravity="end"
-                android:textColor="@color/black"
-             />
+                android:textColor="@color/black" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/signup_tv_password"
-                style="@style/MyTextInputLayoutStyle"
-                >
+                style="@style/MyTextInputLayoutStyle">
+
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/sign_up_edit_password"
+                    android:id="@+id/signUpEditPassword"
                     style="@style/SignUpEditText"
                     android:maxLength="16"
-                    android:inputType="textPassword"
-                    />
+                    android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -136,79 +130,67 @@
                 android:layout_height="wrap_content"
                 android:text="@string/signup_tv_password_hint"
                 android:gravity="end"
-                android:textColor="@color/black"
+                android:textColor="@color/black" />
 
-               />
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/sign_up_input_layout_password_confirm"
+                android:id="@+id/signUpInputLayoutPasswordConfirm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/signup_tv_password_confirm"
                 style="@style/MyTextInputLayoutStyle">
+
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/sign_up_edit_password_confirm"
+                    android:id="@+id/signUpEditPasswordConfirm"
                     style="@style/SignUpEditText"
                     android:maxLength="16"
                     android:inputType="textPassword"
-                    android:drawableEnd="@drawable/ic_eye_off"
-                    />
+                    android:drawableEnd="@drawable/ic_eye_off" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
-                android:id="@+id/sign_up_tv_password_confirm"
+                android:id="@+id/signUpTvPasswordConfirm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="end"
-                android:textColor="@color/black"
-              />
-
+                android:textColor="@color/black" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/signup_tv_date"
-                style="@style/MyTextInputLayoutStyle"
-                >
+                style="@style/MyTextInputLayoutStyle">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/sign_up_edit_date"
+                    android:id="@+id/signUpEditDate"
                     style="@style/SignUpEditText"
                     android:inputType="date"
-                    android:maxLength="8"
-                    />
+                    android:maxLength="8" />
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-
-                    />
+                    android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/signup_tv_gender"
-                style="@style/MyTextInputLayoutStyle"
-                >
+                style="@style/MyTextInputLayoutStyle">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/sign_up_edit_gender"
+                    android:id="@+id/signUpEditGender"
                     style="@style/SignUpEditText"
                     android:inputType="text"
-                    android:maxLength="4"
-                    />
+                    android:maxLength="4" />
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-
-                    />
+                    android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 style="@style/Btn"
-                android:id="@+id/sign_up_btn_sign_up"
+                android:id="@+id/signUpBtnSignUp"
                 android:backgroundTint="#A8A8A8"
                 android:text="@string/signup_btn_sing_up"/>
         </LinearLayout>
     </ScrollView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

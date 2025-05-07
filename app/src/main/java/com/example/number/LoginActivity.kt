@@ -36,14 +36,17 @@ class LoginActivity : AppCompatActivity() {
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
+
         supportActionBar?.hide()
         window.enterTransition = TransitionInflater.from(this).inflateTransition(R.transition.slide)
         window.exitTransition = TransitionInflater.from(this).inflateTransition(R.transition.slide)
         setContentView(R.layout.activity_login)
 
-        usernameEditText = findViewById(R.id.login_edit_id)
-        passwordEditText = findViewById(R.id.login_edit_password)
-        val loginButton: Button = findViewById(R.id.login_btn_login)
+        usernameEditText = findViewById(R.id.loginEditId)
+        passwordEditText = findViewById(R.id.loginEditPassword)
+        val loginButton: Button = findViewById(R.id.loginBtnLogin)
 
         var isPasswordVisible = false
         passwordEditText.setOnTouchListener { _, event ->
@@ -75,13 +78,13 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
-        findViewById<Button>(R.id.login_btn_sign_up).setOnClickListener {
+        findViewById<Button>(R.id.loginBtnSignUp).setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
             val options = ActivityOptions.makeCustomAnimation(this, R.anim.fade_in, R.anim.fade_out)
             startActivity(intent, options.toBundle())
         }
 
-        findViewById<TextView>(R.id.login_btn_find_id_password).setOnClickListener {
+        findViewById<TextView>(R.id.loginBtnFindIdPassword).setOnClickListener {
             val intent = Intent(this, FindIDPasswordActivity::class.java)
             val options = ActivityOptions.makeCustomAnimation(this, R.anim.fade_in, R.anim.fade_out)
             startActivity(intent, options.toBundle())
@@ -115,6 +118,7 @@ class LoginActivity : AppCompatActivity() {
         CoroutineScope(Dispatchers.Main).launch {
             try {
                 val response = userRepository.login(username, password, deviceId, phoneNumber)
+                //response = userId,userName,token
                 if (response.isSuccessful) {
                     response.body()?.let {
                         Toast.makeText(applicationContext, "로그인 성공", Toast.LENGTH_SHORT).show()
@@ -158,4 +162,5 @@ class LoginActivity : AppCompatActivity() {
             apply()
         }
     }
+
 }

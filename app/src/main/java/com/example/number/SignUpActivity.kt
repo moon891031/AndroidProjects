@@ -23,9 +23,9 @@ class SignUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
         setContentView(R.layout.activity_sign_up)
-        passwordEditText = findViewById(R.id.sign_up_edit_password)
-        confirmPasswordEditText = findViewById(R.id.sign_up_edit_password_confirm)
-        passwordConfirmTextView = findViewById(R.id.sign_up_tv_password_confirm)
+        passwordEditText = findViewById(R.id.signUpEditPassword)
+        confirmPasswordEditText = findViewById(R.id.signUpEditPasswordConfirm)
+        passwordConfirmTextView = findViewById(R.id.signUpTvPasswordConfirm)
 
         var isPasswordVisible = false // 초기 상태: 비밀번호 숨김
 
@@ -68,8 +68,8 @@ class SignUpActivity : AppCompatActivity() {
             }
         }
  */
-        val passwordEditText = findViewById<TextInputEditText>(R.id.sign_up_edit_password)
-        val confirmPasswordEditText = findViewById<TextInputEditText>(R.id.sign_up_edit_password_confirm)
+        val passwordEditText = findViewById<TextInputEditText>(R.id.signUpEditPassword)
+        val confirmPasswordEditText = findViewById<TextInputEditText>(R.id.signUpEditPasswordConfirm)
 
         passwordEditText.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
@@ -97,7 +97,7 @@ class SignUpActivity : AppCompatActivity() {
     private fun validatePasswords() {
         val password = passwordEditText.text.toString()
         val confirmPassword = confirmPasswordEditText.text.toString()
-        val confirmPasswordInputLayout = findViewById<TextInputLayout>(R.id.sign_up_input_layout_password_confirm)
+        val confirmPasswordInputLayout = findViewById<TextInputLayout>(R.id.signUpInputLayoutPasswordConfirm)
 
         if (password.isNotEmpty() && confirmPassword.isNotEmpty()) {
             if (password == confirmPassword) {

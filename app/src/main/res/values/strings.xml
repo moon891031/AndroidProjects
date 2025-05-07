@@ -48,6 +48,15 @@
     <string name="find_id_password_et_id_hint">아이디<font color="#FF0000">*</font></string>
     <string name="find_id_password_btn_verify_id">본인인증</string>
     <string name="find_id_password_btn_verify_password">본인인증</string>
+    <string name="contact_detail_tv_name">이름</string>
+    <string name="contact_detail_tv_phone">전화번호</string>
+    <string name="contact_detail_tv_group">그룹</string>
+    <string name="contact_detail_tv_address">주소</string>
+    <string name="contact_detail_tv_car_number">차량번호</string>
+    <string name="contact_detail_tv_car_type">차량종류</string>
+    <string name="contact_detail_tv_memo">메모</string>
+    <string name="contact_detail_tv_call_log">통화기록</string>
+    <string name="contact_detail_tv_activity_log">활동일지</string>
 
 
 </resources>
