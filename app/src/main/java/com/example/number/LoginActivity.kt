@@ -20,6 +20,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -32,22 +33,16 @@ class LoginActivity : AppCompatActivity() {
     private val PERMISSION_REQUEST_CODE = 100
     private lateinit var usernameEditText: EditText
     private lateinit var passwordEditText: EditText
-
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
-
         supportActionBar?.hide()
         window.enterTransition = TransitionInflater.from(this).inflateTransition(R.transition.slide)
         window.exitTransition = TransitionInflater.from(this).inflateTransition(R.transition.slide)
         setContentView(R.layout.activity_login)
-
         usernameEditText = findViewById(R.id.loginEditId)
         passwordEditText = findViewById(R.id.loginEditPassword)
         val loginButton: Button = findViewById(R.id.loginBtnLogin)
-
         var isPasswordVisible = false
         passwordEditText.setOnTouchListener { _, event ->
             val DRAWABLE_END = 2
@@ -113,12 +108,11 @@ class LoginActivity : AppCompatActivity() {
     private fun handleLogin(username: String, password: String) {
         val deviceId = Settings.Secure.getString(contentResolver, Settings.Secure.ANDROID_ID)
         val telephonyManager = getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
-        val phoneNumber = telephonyManager.line1Number ?: "" // 일부 기기에서는 null일 수 있음
-
-        CoroutineScope(Dispatchers.Main).launch {
+        //val phoneNumber = telephonyManager.line1Number ?: "" // 일부 기기에서는 null일 수 있음
+        val phoneNumber = "01068657633"
+        lifecycleScope.launch {
             try {
                 val response = userRepository.login(username, password, deviceId, phoneNumber)
-                //response = userId,userName,token
                 if (response.isSuccessful) {
                     response.body()?.let {
                         Toast.makeText(applicationContext, "로그인 성공", Toast.LENGTH_SHORT).show()
@@ -129,8 +123,6 @@ class LoginActivity : AppCompatActivity() {
                     }
                 } else {
                     Toast.makeText(applicationContext, "로그인 실패: ${response.message()}", Toast.LENGTH_SHORT).show()
-                    Log.d("BODA_login", "deviceID:$deviceId/phoneNumber:$phoneNumber")
-                    startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                 }
             } catch (e: Exception) {
                 Toast.makeText(applicationContext, "네트워크 오류가 발생했습니다.", Toast.LENGTH_SHORT).show()
@@ -153,12 +145,11 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun saveUserInfo(userInfo: UserInfo) {
-        val prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE)
+        val prefs = getSharedPreferences("auth_prefs", MODE_PRIVATE)
         with(prefs.edit()) {
-            putString("userId", userInfo.userId)
-            putString("username", userInfo.username)
-            putString("token", userInfo.token)
-            Log.d("BODA_login_saveUserInfo", userInfo.userId +"/"+ userInfo.username +"/"+ userInfo.token)
+            putString("accessToken", userInfo.accessToken)
+            putString("refreshToken", userInfo.refreshToken)
+            Log.d("BODA_login_saveUserInfo", userInfo.accessToken +"/"+ userInfo.refreshToken)
             apply()
         }
     }

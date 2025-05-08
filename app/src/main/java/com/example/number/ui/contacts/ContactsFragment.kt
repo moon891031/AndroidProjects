@@ -9,12 +9,16 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.number.LoginActivity
 import com.example.number.ModifyGroupActivity
+import com.example.number.api.RetrofitInstance
 
 import com.example.number.databinding.FragmentContactsBinding
 import com.example.number.model.Contact
 import com.example.number.repository.ContactRepository
+import com.example.number.utils.AuthManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -55,8 +59,32 @@ class ContactsFragment : Fragment() {
 
         binding.contactBtnModifyGroup.setOnClickListener {
             val intent = Intent(requireContext(), ModifyGroupActivity::class.java)
-            startActivity(intent)
+            lifecycleScope.launch {
+                try {
+                    val response = RetrofitInstance.contactGroupService.getContactGroups()
+                    if (response.isSuccessful) {
+                        val groupList = response.body()?.contactGroupList
+                        groupList?.forEach {
+                            Log.d("BODA_TEST", "${it.name} (${it.contactCount})")
 
+                        }
+                        startActivity(intent)
+                    } else {
+                        Log.e("BODA_TEST", "실패: ${response.code()}")
+                    }
+                } catch (e: Exception) {
+                    Log.e("BODA_TEST", "예외 발생", e)
+                }
+            }
+           //
+
+        }
+        binding.contactBtnLogOut.setOnClickListener {
+            AuthManager.clearTokens()
+
+            val intent = Intent(requireContext(), LoginActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
         }
 
 
