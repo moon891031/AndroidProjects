@@ -35,7 +35,7 @@ class ModifyGroupActivity : AppCompatActivity() {
         recyclerFilterList.adapter = adapter
         recyclerFilterList.layoutManager = LinearLayoutManager(this)
 
-        val btnSaveGroup = findViewById<Button>(R.id.modifyGroupBtnSave) // 버튼 ID는 xml에 정의되어 있어야 함
+        val btnSaveGroup = findViewById<Button>(R.id.modifyGroupBtnSave)
         btnSaveGroup.setOnClickListener {
             lifecycleScope.launch {
                 try {

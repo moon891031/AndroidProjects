@@ -75,6 +75,8 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".ModifyGroupActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".AddContactActivity"
+            android:screenOrientation="portrait"/>
 
         <receiver
             android:name=".PhoneReceiver"

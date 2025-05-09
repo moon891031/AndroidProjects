@@ -123,6 +123,7 @@ class LoginActivity : AppCompatActivity() {
                     }
                 } else {
                     Toast.makeText(applicationContext, "로그인 실패: ${response.message()}", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                 }
             } catch (e: Exception) {
                 Toast.makeText(applicationContext, "네트워크 오류가 발생했습니다.", Toast.LENGTH_SHORT).show()
