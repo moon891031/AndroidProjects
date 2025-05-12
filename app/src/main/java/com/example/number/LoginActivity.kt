@@ -21,8 +21,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import com.example.number.repository.UserRepository
 import com.example.number.model.UserInfo
@@ -54,7 +52,7 @@ class LoginActivity : AppCompatActivity() {
                     if (isPasswordVisible) HideReturnsTransformationMethod.getInstance()
                     else PasswordTransformationMethod.getInstance()
 
-                val icon = if (isPasswordVisible) R.drawable.login_eye_on else R.drawable.login_eye_off
+                val icon = if (isPasswordVisible) R.drawable.ic_eye_on2 else R.drawable.ic_eye_off2
                 passwordEditText.setCompoundDrawablesWithIntrinsicBounds(0, 0, icon, 0)
                 passwordEditText.setSelection(passwordEditText.text.length)
                 return@setOnTouchListener true

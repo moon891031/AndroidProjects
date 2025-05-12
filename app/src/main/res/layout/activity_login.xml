@@ -55,15 +55,16 @@
                     android:textSize="12sp"
                     android:minHeight="48dp"
                     android:singleLine="true"
-                    android:drawableEnd="@drawable/login_eye_off"
+                    android:drawableEnd="@drawable/ic_eye_off2"
                     android:maxLength="10"
                     android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:id="@+id/loginBtnFindIdPassword"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="20dp"
+                android:gravity="center"
                 android:text="@string/login_tv_find_id_pw"
                 android:textColor="@color/black"
                 android:backgroundTint="@color/white"

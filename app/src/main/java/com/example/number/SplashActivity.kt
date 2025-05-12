@@ -18,7 +18,7 @@ class SplashActivity : AppCompatActivity() {
         // Splash 화면에 표시할 레이아웃 설정
         supportActionBar?.hide()
         setContentView(R.layout.activity_splash)
-        val prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE)
+        val prefs = getSharedPreferences("auth_prefs", MODE_PRIVATE)
         val accessToken = prefs.getString("accessToken", null)
         // 일정 시간 후 LoginActivity로 이동
         Handler(Looper.getMainLooper()).postDelayed({

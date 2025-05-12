@@ -29,6 +29,7 @@ class ContactsFragment : Fragment() {
     private val contactRepository = ContactRepository()
     private lateinit var contactAdapter: ContactAdapter
     private lateinit var filterGroupAdapter: ContactGroupListAdapter
+    private lateinit var contactGroupListAdapter: ContactGroupListAdapter
     private val filterItems: MutableList<ContactGroup> = mutableListOf()
 
     override fun onCreateView(
@@ -38,9 +39,8 @@ class ContactsFragment : Fragment() {
 
         setupContactRecyclerView()
         setupFilterDropdown()
-        setupGroupRecyclerView()
+        setupGroupRecyclerView()  // contactGroupListAdapter 초기화
         setupClickListeners()
-
         fetchContacts()
         fetchGroupList()
 
@@ -70,21 +70,29 @@ class ContactsFragment : Fragment() {
             val selectedFilter = binding.contactFilterItem.text.toString()
             val searchText = binding.contactEtSearch.text.toString()
 
+            // 선택된 그룹 ID 가져오기
+            val selectedGroupIds = contactGroupListAdapter.getSelectedGroupIds()  // 어댑터에서 선택된 그룹 아이디 가져오기
+            val groupInfo = if (selectedGroupIds.isEmpty()) {
+                "선택된 그룹 없음"
+            } else {
+                "선택된 그룹 ID: ${selectedGroupIds.joinToString(", ")}"
+            }
+
             Toast.makeText(
                 requireContext(),
-                "필터: $selectedFilter\n검색어: $searchText",
+                ".$selectedFilter .$searchText .$groupInfo",
                 Toast.LENGTH_SHORT
             ).show()
-
+            Log.d("BODA_SearchInfo", "필터: $selectedFilter\n검색어: $searchText\n$groupInfo")
             fetchContacts(searchText)
         }
     }
 
     private fun setupGroupRecyclerView() {
-        filterGroupAdapter = ContactGroupListAdapter(filterItems)
+        contactGroupListAdapter = ContactGroupListAdapter(filterItems)  // 초기화 추가
         binding.contactRvGroup.apply {
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-            adapter = filterGroupAdapter
+            adapter = contactGroupListAdapter
         }
     }
 
@@ -147,9 +155,15 @@ class ContactsFragment : Fragment() {
                 val response = RetrofitInstance.contactGroupService.getContactGroups()
                 if (response.isSuccessful) {
                     response.body()?.contactGroupList?.let {
+                        // 데이터 업데이트
                         filterItems.clear()
                         filterItems.addAll(it)
-                        filterGroupAdapter.notifyDataSetChanged()
+
+                        // 로그로 데이터 확인
+                        Log.d("GroupList", "그룹 리스트: ${it}")
+
+                        // 어댑터에게 데이터 변경 알리기
+                        contactGroupListAdapter.notifyDataSetChanged()
                     }
                 } else {
                     Log.e("API_ERROR", "그룹 리스트 실패: ${response.code()}")
@@ -168,8 +182,10 @@ class ContactsFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
     override fun onResume() {
         super.onResume()
+        contactGroupListAdapter.clearSelections()
         fetchGroupList() // 화면이 다시 보일 때 그룹 목록 갱신
     }
 }

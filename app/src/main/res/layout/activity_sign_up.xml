@@ -43,7 +43,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
-                    style="@style/Btn"
+                    style="@style/Btn_sub"
                     android:id="@+id/signUpBtnPhoneConfirm"
                     android:layout_width="wrap_content"
                     android:layout_height="45dp"
@@ -87,13 +87,14 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         style="@style/SignUpEditText"
+
                         android:id="@+id/signUpEditId"
                         android:inputType="text"
                         android:maxLength="11" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
-                    style="@style/Btn"
+                    style="@style/Btn_sub"
                     android:id="@+id/signUpBtnIdConfirm"
                     android:layout_width="wrap_content"
                     android:layout_height="45dp"
@@ -144,7 +145,7 @@
                     style="@style/SignUpEditText"
                     android:maxLength="16"
                     android:inputType="textPassword"
-                    android:drawableEnd="@drawable/ic_eye_off" />
+                    android:drawableEnd="@drawable/ic_eye_off2" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView

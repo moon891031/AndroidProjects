@@ -324,7 +324,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
     private fun logout() {
-        val prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE)
+        val prefs = getSharedPreferences("auth_prefs", MODE_PRIVATE)
         prefs.edit().clear().apply()
 
         startActivity(Intent(this, LoginActivity::class.java))

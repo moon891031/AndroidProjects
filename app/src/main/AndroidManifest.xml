@@ -67,15 +67,15 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".FindIdPasswordActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".ContactDetailActivity"
+        <activity android:name=".ui.contacts.ContactDetailActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".FindIdActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".FindPasswordActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".ModifyGroupActivity"
+        <activity android:name=".ui.contacts.ModifyGroupActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".AddContactActivity"
+        <activity android:name=".ui.contacts.AddContactActivity"
             android:screenOrientation="portrait"/>
 
         <receiver

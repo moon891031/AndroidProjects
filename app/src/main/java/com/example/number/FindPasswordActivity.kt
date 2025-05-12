@@ -39,10 +39,10 @@ class FindPasswordActivity : AppCompatActivity() {
 
                     if (isPasswordVisible) {
                         confirmPasswordEditText.transformationMethod = HideReturnsTransformationMethod.getInstance()
-                        confirmPasswordEditText.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_eye_on, 0)
+                        confirmPasswordEditText.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_eye_on2, 0)
                     } else {
                         confirmPasswordEditText.transformationMethod = PasswordTransformationMethod.getInstance()
-                        confirmPasswordEditText.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_eye_off, 0)
+                        confirmPasswordEditText.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_eye_off2, 0)
                     }
 
                     // 커서 위치 유지

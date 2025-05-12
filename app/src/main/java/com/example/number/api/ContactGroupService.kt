@@ -7,7 +7,7 @@ import retrofit2.http.PATCH
 
 data class ContactGroup(
     val contactGroupId: Int,
-    val name: String,
+    var name: String,
     val color: String,
     val contactCount: Int
 )
